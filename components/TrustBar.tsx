@@ -1,14 +1,7 @@
-import UltherapyBadge from "@/components/UltherapyBadge";
+import { ALL_SERVICES } from "@/lib/data";
 
-const BRANDS = [
-  "InMode",
-  "Alma Lasers",
-  "SkinCeuticals",
-  "ZO Skin Health",
-  "Isdin",
-] as const;
-
-const MARQUEE_ITEMS = [...BRANDS, ...BRANDS];
+const TREATMENTS = ALL_SERVICES.map((service) => service.name);
+const MARQUEE_ITEMS = [...TREATMENTS, ...TREATMENTS];
 
 export default function TrustBar() {
   return (
@@ -16,26 +9,20 @@ export default function TrustBar() {
       <div className="overflow-hidden py-5 md:py-6">
         <div
           className="flex w-max animate-brand-marquee items-center motion-reduce:animate-none"
-          aria-label="Marcas y tecnologías con las que trabajamos"
+          aria-label="Tratamientos disponibles en la clínica"
         >
-          {MARQUEE_ITEMS.map((brand, index) => (
+          {MARQUEE_ITEMS.map((treatment, index) => (
             <span
-              key={`${brand}-${index}`}
-              aria-hidden={index >= BRANDS.length}
-              className="mx-8 flex shrink-0 items-center gap-8 font-serif text-sm uppercase tracking-[0.2em] text-luxury-bg/90 md:mx-10 md:text-base"
+              key={`${treatment}-${index}`}
+              aria-hidden={index >= TREATMENTS.length}
+              className="mx-6 flex shrink-0 items-center gap-6 font-serif text-sm tracking-wide text-luxury-bg/90 md:mx-8 md:text-base"
             >
-              {brand}
+              {treatment}
               <span className="text-luxury-accent" aria-hidden>
                 •
               </span>
             </span>
           ))}
-        </div>
-      </div>
-
-      <div className="border-t border-luxury-bg/10 bg-luxury-dark py-8 md:py-10">
-        <div className="luxury-container">
-          <UltherapyBadge variant="bar" />
         </div>
       </div>
     </section>
