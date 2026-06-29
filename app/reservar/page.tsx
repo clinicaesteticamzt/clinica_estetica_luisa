@@ -150,7 +150,7 @@ function ReservarContent() {
         description="Elige tu tratamiento, horario y datos de contacto. Los tratamientos se confirman con pago en línea; los protocolos que requieren valoración médica se coordinan por WhatsApp."
       />
 
-      <section className="section-padding bg-luxury-bg pb-32">
+      <section className="section-padding bg-luxury-bg pb-36 sm:pb-32">
         <div className="luxury-container max-w-2xl">
           <div className="mb-8">
             <p className="section-label">Opción más rápida</p>
@@ -249,7 +249,7 @@ function ReservarContent() {
             </section>
 
             {serviceId && !isHighEnd && (
-              <section ref={scheduleRef} className="mb-8 scroll-mt-28">
+              <section ref={scheduleRef} className="mb-8 scroll-mt-28 scroll-mb-28">
                 <p className="section-label">¿Cuándo te conviene?</p>
 
                 <BookingCalendar
@@ -268,13 +268,13 @@ function ReservarContent() {
                         {formatDateLong(selectedDate)}
                       </span>
                     </p>
-                    <div className="grid grid-cols-4 gap-2 sm:grid-cols-5">
+                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
                       {AVAILABLE_TIMES.map((time) => (
                         <button
                           key={time}
                           type="button"
                           onClick={() => selectDateTime(selectedDate, time)}
-                          className={`rounded-pill px-2 py-2.5 text-sm transition-all duration-300 ${
+                          className={`rounded-pill px-1.5 py-2 text-xs transition-all duration-300 sm:px-2 sm:py-2.5 sm:text-sm ${
                             selectedTime === time
                               ? "bg-luxury-dark text-luxury-bg"
                               : "border border-luxury-accent/30 text-luxury-text hover:border-luxury-accent"
@@ -308,7 +308,7 @@ function ReservarContent() {
             )}
 
             {serviceId && (isHighEnd || (selectedDate && selectedTime)) && (
-              <section ref={contactRef} className="scroll-mt-28">
+              <section ref={contactRef} className="scroll-mt-28 scroll-mb-28">
                 <p className="section-label">Tus datos</p>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <input
@@ -364,8 +364,8 @@ function ReservarContent() {
         </div>
 
         {serviceId && (
-          <div className="fixed inset-x-0 bottom-0 z-40 border-t border-luxury-accent/15 bg-luxury-bg/95 px-4 py-4 shadow-serenity backdrop-blur-md">
-            <div className="luxury-container flex max-w-2xl items-center justify-between gap-4">
+          <div className="fixed inset-x-0 bottom-0 z-40 border-t border-luxury-accent/15 bg-luxury-bg/95 px-4 py-3 shadow-serenity backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+            <div className="luxury-container flex max-w-2xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <div className="min-w-0 flex-1 text-sm">
                 <p className="truncate font-medium text-luxury-dark">
                   {selectedService?.name.split("(")[0].trim()}
@@ -387,7 +387,12 @@ function ReservarContent() {
                 }`}
               >
                 {isHighEnd ? <MessageCircle size={18} /> : null}
-                {isHighEnd ? "Solicitar valoración" : "Confirmar y pagar"}
+                <span className="sm:hidden">
+                  {isHighEnd ? "Valoración" : "Confirmar"}
+                </span>
+                <span className="hidden sm:inline">
+                  {isHighEnd ? "Solicitar valoración" : "Confirmar y pagar"}
+                </span>
               </button>
             </div>
           </div>

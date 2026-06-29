@@ -52,7 +52,7 @@ export default function FAQ() {
                   onClick={() => setOpen(open === i ? null : i)}
                   className="flex w-full items-start justify-between gap-4 text-left"
                 >
-                  <span className="font-medium text-luxury-dark">{faq.q}</span>
+                  <span className="text-sm font-medium text-luxury-dark sm:text-base">{faq.q}</span>
                   <span className="mt-0.5 shrink-0 text-luxury-accent">
                     {open === i ? <Minus size={18} /> : <Plus size={18} />}
                   </span>

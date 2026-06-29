@@ -29,7 +29,7 @@ export default function Technology({ variant = "section" }: TechnologyProps) {
   return (
     <section className={isPage ? "bg-luxury-bg" : "bg-luxury-card py-20 md:py-28"}>
       {isPage && (
-        <div className="border-b border-luxury-accent/10 bg-luxury-card pt-[7.5rem] md:pt-36">
+        <div className="border-b border-luxury-accent/10 bg-luxury-card pt-[6.75rem] md:pt-[7.5rem]">
           <div className="luxury-container pb-12 pt-6 text-center md:pb-16 md:pt-8">
             <div className="mb-8 flex justify-center md:mb-10">
               <Logo variant="navbar" showText />
@@ -62,12 +62,12 @@ export default function Technology({ variant = "section" }: TechnologyProps) {
         </div>
 
         <div
-          className={`flex flex-col items-center justify-center gap-6 rounded-serenity-lg border border-luxury-accent/15 bg-luxury-dark px-6 py-10 md:flex-row md:gap-12 ${
+          className={`flex flex-col items-center justify-center gap-6 rounded-serenity-lg border border-luxury-accent/15 bg-luxury-dark px-6 py-10 md:flex-row md:flex-wrap md:justify-center lg:flex-nowrap lg:gap-12 ${
             isPage ? "mt-16 md:mt-20" : "mt-12"
           }`}
         >
           {CERTIFICATIONS.map(({ icon: Icon, text, detail }) => (
-            <div key={text} className="flex items-center gap-3 text-luxury-bg">
+            <div key={text} className="flex w-full max-w-xs items-center gap-3 text-luxury-bg md:w-auto md:max-w-[14rem] lg:max-w-none">
               <Icon size={22} className="shrink-0 text-luxury-accent" />
               <div>
                 <span className="block text-sm font-medium tracking-wide">{text}</span>

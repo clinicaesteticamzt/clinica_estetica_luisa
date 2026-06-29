@@ -14,7 +14,7 @@ export const CLINIC = {
   tiktok: "https://www.tiktok.com/@dra.laurasimental",
   maps: "https://goo.gl/maps/ApTf1PD7jwPx3NNLa9",
   googleReviews:
-    "https://www.google.com/search?q=clinica+dra+laura+simental#lrd=0x869f55ae8f95a9dd:0xc065e3ca5a5505a7,1,,,,",
+    "https://www.google.com/search?q=opiniones+de+laura+simental&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_1sHcyHAK4mMj2Pn3_hbTzUzU2HemhihWNmQB1Ooa-3PBtl9NB5rv6FDToAd5nJvcmk79SUK3Ofbmz_VuntYN2f4TIUv1Yv5Ir4BTP2C6QP2nwUrlQ%3D%3D&sa=X&ved=2ahUKEwiz-6LNt6yVAxXHIkQIHWIfPN8Qk8gLegQIGxAB",
   ultherapy:
     "https://ultherapy.com/mx/encuentratudoctor/profile/dra-laura-simental",
   ultherapyLogo: "/logotipos/Logo Utherapy.png",
@@ -319,7 +319,6 @@ export type GoogleReview = {
   name: string;
   text: string;
   rating: number;
-  timeAgo: string;
   localGuide?: boolean;
 };
 
@@ -328,19 +327,79 @@ export const GOOGLE_REVIEWS = {
   count: 16,
   reviews: [
     {
+      id: "ana-osuna",
+      name: "Ana Osuna",
+      text: "La mejor doctora en Mazatlán!! Feliz cumpleaños Laura!! Que sea un gran año!!",
+      rating: 5,
+    },
+    {
+      id: "blanca-lopez",
+      name: "Blanca Nelva López",
+      text: "Estoy encantada con el producto, me cambió la cara, gracias por dármelo a conocer.",
+      rating: 5,
+    },
+    {
       id: "angelica-bojorquez",
       name: "Angélica Bojórquez",
-      text: "Productos de alta calidad, aparatos de última generación y una atención con mucha calidez humana.",
+      text: "La Clínica de Laura Simental, aparte de manejar productos de alta calidad, los aparatos de última generación en tecnología y productos reconocidos altamente calificados, brindan una atención con mucha calidez y atención humana.",
       rating: 5,
-      timeAgo: "Hace un año",
       localGuide: true,
+    },
+    {
+      id: "nidia-moreno",
+      name: "Nidia Moreno",
+      text: "La recomiendo porque es muy profesional, amable y siempre te dice lo que necesitas realmente.",
+      rating: 5,
+    },
+    {
+      id: "teresa-silva",
+      name: "Teresa Silva",
+      text: "Es una excelente Dra., eficiente y comprensiva con sus pacientes; también sus colaboradoras son atentas, trabajadoras y amables.",
+      rating: 5,
+    },
+    {
+      id: "octavio-pano",
+      name: "Octavio Pano Eventos",
+      text: "La doctora y todo su equipo muy profesionales, ofrecen un servicio de calidad y los mejores productos con excelente atención al cliente.",
+      rating: 5,
+    },
+    {
+      id: "lupita-bernal",
+      name: "Lupita Bernal",
+      text: "Excelente Dra.!!!",
+      rating: 5,
     },
     {
       id: "lisa-peacey",
       name: "Lisa Peacey",
-      text: "Resultados naturales, marcas aprobadas por la FDA y atención excelente en inglés y español. ¡La recomiendo ampliamente!",
+      text: "¡Me encantan mis resultados! La Dra. Laura Simental habla inglés, así que es fantástica tanto para turistas angloparlantes como para hispanohablantes. Solo usa marcas reconocidas y aprobadas por la FDA de rellenos y bótox, algo imprescindible para mí. Sus precios son excelentes y ofrece un descuento muy bueno. Estoy muy contenta con mis resultados naturales: solo un poco más joven y descansada. ¡La recomiendo ampliamente!",
       rating: 5,
-      timeAgo: "Hace 3 años",
+      localGuide: true,
+    },
+    {
+      id: "m-a",
+      name: "M A",
+      text: "Tuve una experiencia fantástica con la Dra. Laura. Es muy profesional y tiene muchos conocimientos. Su trato es muy amable y comprensivo con mis inquietudes. La visita fue muy agradable y estoy muy contenta con los resultados del relleno. Además, me dio un plan de cuidado de la piel que me encanta. La recomiendo ampliamente y volveré en el futuro.",
+      rating: 5,
+      localGuide: true,
+    },
+    {
+      id: "isela-lizarraga",
+      name: "Isela Lizárraga",
+      text: "Excelente servicio.",
+      rating: 5,
+    },
+    {
+      id: "fausto-guerrero",
+      name: "Fausto Guerrero",
+      text: "Excelente atención y muy bonitas instalaciones. Súper recomendado.",
+      rating: 5,
+    },
+    {
+      id: "marco-gonzalez",
+      name: "Marco González",
+      text: "Es una experiencia increíble ir con la Dra. Laura Simental: excelente atención, servicio y los mejores productos.",
+      rating: 5,
       localGuide: true,
     },
     {
@@ -348,42 +407,25 @@ export const GOOGLE_REVIEWS = {
       name: "Melchor Pérez",
       text: "La mejor dra. en medicina estética de Mazatlán. ¡200% recomendada!",
       rating: 5,
-      timeAgo: "Hace 3 años",
     },
     {
       id: "araceli-lizarraga",
       name: "Araceli Lizárraga",
-      text: "Excelente doctora, sin duda la mejor. Tratamientos a la vanguardia y los mejores productos. 10 de 10.",
+      text: "Excelente doctora, sin duda la mejor. Siempre con los mejores tratamientos a la vanguardia y los mejores productos. Ampliamente recomendada, 10 de 10.",
       rating: 5,
-      timeAgo: "Hace 3 años",
     },
     {
       id: "fabiola-lopez",
       name: "Fabiola López Meza",
-      text: "Siempre a la vanguardia con los mejores tratamientos y equipos. Su clínica nueva súper bonita. Experiencia y excelencia.",
+      text: "Excelente Dra. Siempre a la vanguardia con los mejores tratamientos y equipos para verse y sentirse mejor. Y su clínica nueva súper bonita. Experiencia y excelencia.",
       rating: 5,
-      timeAgo: "Hace 3 años",
     },
     {
-      id: "teresa-silva",
-      name: "Teresa Silva",
-      text: "Excelente Dra., eficiente y comprensiva. Sus colaboradoras son atentas, trabajadoras y amables.",
+      id: "eduardo-zamora",
+      name: "Eduardo Zamora",
+      text: "El mejor servicio.",
       rating: 5,
-      timeAgo: "Hace un año",
-    },
-    {
-      id: "octavio-pano",
-      name: "Octavio Pano Eventos",
-      text: "La doctora y todo su equipo muy profesionales, con servicio de calidad y los mejores productos.",
-      rating: 5,
-      timeAgo: "Hace un año",
-    },
-    {
-      id: "fausto-guerrero",
-      name: "Fausto Guerrero",
-      text: "Excelente atención y muy bonitas instalaciones. Súper recomendado.",
-      rating: 5,
-      timeAgo: "Hace 3 años",
+      localGuide: true,
     },
   ] satisfies GoogleReview[],
 } as const;

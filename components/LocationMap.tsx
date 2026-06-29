@@ -29,7 +29,7 @@ export default function LocationMap() {
               <iframe
                 title={`Ubicación de ${CLINIC.name}`}
                 src={MAP_EMBED}
-                className="h-[420px] w-full sm:h-[480px] lg:h-[560px]"
+                className="h-[280px] w-full sm:h-[420px] lg:h-[560px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
@@ -115,7 +115,7 @@ export default function LocationMap() {
                     {HOURS.map((slot) => (
                       <li
                         key={slot.days}
-                        className="flex justify-between gap-4 text-sm text-luxury-text/80"
+                        className="flex flex-col gap-1 text-sm sm:flex-row sm:justify-between sm:gap-4 text-luxury-text/80"
                       >
                         <span>{slot.days}</span>
                         <span className="font-medium text-luxury-dark">

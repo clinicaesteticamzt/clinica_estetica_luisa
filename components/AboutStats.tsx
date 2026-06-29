@@ -33,7 +33,7 @@ export default function AboutStats() {
           <UltherapyBadge variant="featured" />
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-3 gap-6 border-t border-luxury-accent/15 pt-10">
+        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-8 border-t border-luxury-accent/15 pt-10 sm:grid-cols-3 sm:gap-6">
           {STATS.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="font-serif text-2xl text-luxury-dark md:text-3xl">

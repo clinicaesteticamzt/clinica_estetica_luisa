@@ -247,7 +247,7 @@ export default function LumeccaBlock() {
                       {BENEFITS.map((benefit) => (
                         <li
                           key={benefit}
-                          className="flex items-center gap-3 rounded-full border border-luxury-accent/35 bg-white px-4 py-3 text-sm leading-snug text-luxury-text shadow-serenity"
+                          className="flex items-start gap-3 rounded-serenity-lg border border-luxury-accent/35 bg-white px-4 py-3 text-sm leading-relaxed text-luxury-text shadow-serenity"
                         >
                           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-luxury-dark text-white">
                             <Check size={14} strokeWidth={3} />

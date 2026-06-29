@@ -15,7 +15,7 @@ export default function PageHeader({
 }: PageHeaderProps) {
   return (
     <div
-      className={`border-b border-luxury-accent/10 pt-[7.5rem] md:pt-36 ${
+      className={`border-b border-luxury-accent/10 pt-[6.75rem] md:pt-[7.5rem] ${
         tone === "sand" ? "bg-luxury-card" : "bg-luxury-bg"
       }`}
     >

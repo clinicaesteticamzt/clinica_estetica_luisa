@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import Logo from "@/components/Logo";
 import SocialIcon from "@/components/SocialIcon";
-import { CLINIC } from "@/lib/data";
 import { SOCIAL_LINKS } from "@/lib/social-links";
 
 const NAV_LINKS = [
@@ -45,9 +44,9 @@ export default function Navbar() {
             : "bg-luxury-bg/95 backdrop-blur-sm"
         }`}
       >
-        <nav className="luxury-container flex h-[4.5rem] items-center justify-between gap-3 md:h-[5.25rem] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
-          <div className="flex items-center lg:justify-start">
-            <Logo variant="navbar" showText className="sm:gap-3" />
+        <nav className="luxury-container flex h-[4.5rem] items-center justify-between gap-2 sm:gap-3 md:h-[5.25rem] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
+          <div className="flex min-w-0 items-center lg:justify-start">
+            <Logo variant="navbar" showText className="gap-2 sm:gap-3" />
           </div>
 
           <ul className="hidden items-center justify-center gap-6 lg:flex xl:gap-8">
@@ -63,30 +62,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="flex items-center justify-end gap-2 sm:gap-3">
-            <a
-              href={`tel:${CLINIC.phoneE164}`}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-luxury-text/80 transition-colors hover:text-luxury-dark sm:hidden"
-              aria-label={`Llamar al ${CLINIC.phone}`}
-            >
-              <Phone size={15} strokeWidth={1.5} />
-            </a>
-
-            <div className="flex items-center gap-1 sm:hidden">
-              {SOCIAL_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="flex h-7 w-7 items-center justify-center rounded-full bg-luxury-dark text-luxury-bg"
-                >
-                  <SocialIcon link={link} size={13} />
-                </a>
-              ))}
-            </div>
-
+          <div className="flex items-center justify-end gap-1 sm:gap-3">
             <Link href="/reservar" className="btn-pill-dark hidden px-5 py-2.5 sm:inline-flex">
               Agendar cita
             </Link>
@@ -104,11 +80,18 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[6.75rem] z-40 overflow-y-auto bg-luxury-bg md:top-[7.5rem] lg:hidden">
-          <div className="border-b border-luxury-accent/10 px-6 py-6">
-            <Logo variant="mobile" showText asLink={false} />
-          </div>
-          <ul className="flex flex-col px-6 py-4">
+        <>
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            className="fixed inset-0 top-[6.75rem] z-30 bg-luxury-dark/20 md:top-[7.5rem] lg:hidden"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div className="fixed inset-x-0 bottom-0 top-[6.75rem] z-40 overflow-y-auto bg-luxury-bg md:top-[7.5rem] lg:hidden">
+            <div className="luxury-container border-b border-luxury-accent/10 py-6">
+              <Logo variant="mobile" showText asLink={false} />
+            </div>
+            <ul className="luxury-container flex flex-col py-4">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
@@ -156,7 +139,8 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
-        </div>
+          </div>
+        </>
       )}
     </header>
   );

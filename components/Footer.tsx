@@ -13,15 +13,15 @@ export default function Footer() {
         {/* Newsletter row */}
         <div className="mb-14 flex flex-col items-start justify-between gap-6 border-b border-luxury-bg/10 pb-12 md:flex-row md:items-center">
           <Logo variant="footer" showText />
-          <div className="flex w-full max-w-md gap-2">
+          <div className="flex w-full max-w-md flex-col gap-2 sm:flex-row">
             <input
               type="email"
               placeholder="Tu correo electrónico"
-              className="flex-1 rounded-pill border border-luxury-bg/15 bg-luxury-bg/5 px-5 py-3 text-sm text-luxury-bg placeholder:text-luxury-bg/40 outline-none focus:border-luxury-accent"
+              className="w-full flex-1 rounded-pill border border-luxury-bg/15 bg-luxury-bg/5 px-5 py-3 text-sm text-luxury-bg placeholder:text-luxury-bg/40 outline-none focus:border-luxury-accent"
             />
             <button
               type="button"
-              className="btn-pill shrink-0 bg-luxury-accent px-6 text-luxury-bg hover:bg-luxury-bg hover:text-luxury-dark"
+              className="btn-pill w-full shrink-0 bg-luxury-accent px-6 text-luxury-bg hover:bg-luxury-bg hover:text-luxury-dark sm:w-auto"
             >
               Suscribirse
             </button>

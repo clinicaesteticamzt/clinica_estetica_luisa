@@ -56,7 +56,7 @@ export default function Booking() {
             <button
               type="button"
               onClick={() => setTab("calendar")}
-              className={`flex flex-1 items-center justify-center gap-2 rounded-sm px-4 py-3 text-sm font-medium transition-all duration-300 ${
+              className={`flex flex-1 items-center justify-center gap-2 rounded-sm px-3 py-3 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ${
                 tab === "calendar"
                   ? "bg-luxury-dark text-luxury-bg"
                   : "bg-luxury-card text-luxury-text hover:bg-luxury-accent/20"
@@ -68,7 +68,7 @@ export default function Booking() {
             <button
               type="button"
               onClick={() => setTab("whatsapp")}
-              className={`flex flex-1 items-center justify-center gap-2 rounded-sm px-4 py-3 text-sm font-medium transition-all duration-300 ${
+              className={`flex flex-1 items-center justify-center gap-2 rounded-sm px-3 py-3 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ${
                 tab === "whatsapp"
                   ? "bg-luxury-dark text-luxury-bg"
                   : "bg-luxury-card text-luxury-text hover:bg-luxury-accent/20"
@@ -167,10 +167,15 @@ export default function Booking() {
                 href={whatsappUrl(WHATSAPP_MESSAGE)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-sm bg-[#25D366] px-8 py-4 text-sm font-medium text-white transition-all duration-300 hover:opacity-90"
+                className="inline-flex w-full max-w-md flex-col items-center justify-center gap-2 rounded-sm bg-[#25D366] px-4 py-4 text-sm font-medium text-white transition-all duration-300 hover:opacity-90 sm:w-auto sm:flex-row sm:gap-3 sm:px-8"
               >
-                <MessageCircle size={20} />
-                Consultar disponibilidad para aparatología médica con asistente
+                <MessageCircle size={20} className="shrink-0" />
+                <span className="text-center sm:text-left">
+                  <span className="sm:hidden">Consultar por WhatsApp</span>
+                  <span className="hidden sm:inline">
+                    Consultar disponibilidad para aparatología médica con asistente
+                  </span>
+                </span>
               </a>
               <p className="mt-4 text-sm text-luxury-text/70">
                 WhatsApp: {CLINIC.phone}

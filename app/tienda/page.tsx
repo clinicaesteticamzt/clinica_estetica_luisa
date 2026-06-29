@@ -27,7 +27,7 @@ function ProductCard({ product }: { product: Product }) {
           alt={product.name}
           fill
           className="object-cover transition-transform duration-500 hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
@@ -69,7 +69,7 @@ export default function TiendaPage() {
                 key={cat}
                 type="button"
                 onClick={() => setFilter(cat)}
-                className={`rounded-pill px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+                className={`rounded-pill px-4 py-2 text-xs font-medium transition-all duration-300 sm:px-5 sm:py-2.5 sm:text-sm ${
                   filter === cat
                     ? "bg-luxury-dark text-luxury-bg"
                     : "bg-luxury-card text-luxury-text hover:bg-luxury-accent/20"

@@ -14,10 +14,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
-    @apply bg-luxury-bg text-luxury-text font-sans antialiased;
+    @apply overflow-x-hidden bg-luxury-bg font-sans text-luxury-text antialiased;
   }
 
   h1,
@@ -34,7 +35,7 @@
   }
 
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-16 md:py-28 lg:py-32;
   }
 
   .section-label {

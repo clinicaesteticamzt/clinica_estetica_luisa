@@ -9,8 +9,8 @@ const CLINIC_RECEPTION_IMAGE = "/fotos/clinica estetica.png";
 export default function Intro() {
   return (
     <div className="overflow-hidden">
-      <div className="luxury-container pb-6 pt-16 md:pb-10 md:pt-24 lg:pt-28">
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+      <div className="luxury-container pb-6 pt-12 md:pb-10 md:pt-24 lg:pt-28">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
           <div className="relative lg:col-span-7 lg:pr-6">
             <div
               aria-hidden

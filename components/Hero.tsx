@@ -45,13 +45,13 @@ export default function Hero() {
         </p>
       </a>
 
-      <div className="luxury-container relative z-10 flex min-h-[92vh] flex-col items-center justify-center py-32 text-center">
-        <Logo variant="hero" className="mb-8 md:mb-10" />
+      <div className="luxury-container relative z-10 flex min-h-[92vh] flex-col items-center justify-center px-4 pb-24 pt-28 text-center sm:pt-32 sm:pb-32">
+        <Logo variant="hero" className="mb-6 sm:mb-8 md:mb-10" />
 
-        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-luxury-bg/80">
+        <p className="mb-4 text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-luxury-bg/80 sm:mb-5 sm:text-xs sm:tracking-[0.2em]">
           Mazatlán, Sinaloa · Plaza El Encanto
         </p>
-        <h1 className="max-w-4xl font-serif text-4xl leading-[1.15] text-luxury-bg sm:text-5xl md:text-6xl lg:text-[3.5rem]">
+        <h1 className="max-w-4xl font-serif text-3xl leading-[1.15] text-luxury-bg sm:text-4xl md:text-5xl lg:text-6xl">
           Eleva tu bienestar con medicina estética de lujo
         </h1>
         <p className="mt-6 max-w-xl text-base leading-relaxed text-luxury-bg/85 sm:text-lg">

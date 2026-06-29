@@ -33,8 +33,8 @@ export default function TechnologyHighlight() {
         <div className="grid gap-5 md:grid-cols-3">
           {EQUIPMENT.map((item) => (
             <Card3D key={item.name}>
-              <article className="card-serenity flex h-full flex-col bg-luxury-card p-8">
-                <h3 className="font-serif text-2xl text-luxury-dark">
+              <article className="card-serenity flex h-full flex-col bg-luxury-card p-6 sm:p-8">
+                <h3 className="font-serif text-xl text-luxury-dark sm:text-2xl">
                   {item.name}
                 </h3>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-luxury-text/85">

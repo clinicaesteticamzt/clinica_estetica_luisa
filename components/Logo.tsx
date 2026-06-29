@@ -54,7 +54,7 @@ export default function Logo({
       alt={CLINIC.name}
       width={isPlainLogo ? 96 : variant === "hero" ? 144 : 64}
       height={isPlainLogo ? 96 : variant === "hero" ? 144 : 64}
-      className={`object-contain ${isPlainLogo ? "h-14 w-auto md:h-[5.5rem]" : v.img}`}
+      className={`object-contain ${isPlainLogo ? "h-10 w-auto sm:h-12 md:h-[5.5rem]" : v.img}`}
       priority={variant === "navbar" || variant === "hero"}
     />
   );

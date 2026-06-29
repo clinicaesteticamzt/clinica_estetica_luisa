@@ -17,7 +17,7 @@ export default function Services() {
               key={cat.id}
               type="button"
               onClick={() => setActiveTab(index)}
-              className={`rounded-pill px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+              className={`rounded-pill px-4 py-2 text-xs font-medium transition-all duration-300 sm:px-5 sm:py-2.5 sm:text-sm ${
                 activeTab === index
                   ? "bg-luxury-dark text-luxury-bg"
                   : "bg-luxury-card text-luxury-text hover:bg-luxury-accent/20"
@@ -39,7 +39,7 @@ export default function Services() {
           {category.services.map((service) => (
             <article
               key={service.id}
-              className="card-serenity flex flex-col bg-luxury-bg p-7 md:p-8"
+              className="card-serenity flex flex-col bg-luxury-bg p-5 sm:p-7 md:p-8"
             >
               <h3 className="font-serif text-xl text-luxury-dark">
                 {service.name}
@@ -76,11 +76,13 @@ export default function Services() {
           ))}
         </div>
 
-        <p className="mt-16 text-center text-sm leading-relaxed text-luxury-text/70">
+        <p className="mt-16 break-words text-center text-sm leading-relaxed text-luxury-text/70">
           Los tratamientos se reservan y pagan en línea. El catálogo de skincare en
           Tienda es solo informativo.
-          <br />
-          {CLINIC.phone} · {CLINIC.address}, {CLINIC.city}
+          <br className="hidden sm:inline" />
+          <span className="mt-2 block sm:mt-0 sm:inline">
+            {CLINIC.phone} · {CLINIC.address}, {CLINIC.city}
+          </span>
         </p>
       </div>
     </section>
