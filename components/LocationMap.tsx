@@ -14,17 +14,66 @@ export default function LocationMap() {
   return (
     <>
       <PageHeader
-        label="Contacto"
-        title="Encuéntranos en Plaza El Encanto"
-        description="Estamos ubicados en el corazón de Mazatlán, con fácil acceso y un espacio clínico diseñado para tu comodidad y tranquilidad."
+        label="Ubicación"
+        title="Visítanos en Plaza El Encanto"
+        description="Clínica en Mazatlán con fácil acceso y estacionamiento. Te esperamos en un espacio diseñado para tu comodidad y tranquilidad."
       />
 
-      <section className="section-padding bg-luxury-bg pt-0">
+      <section className="section-padding bg-luxury-card pt-0">
         <div className="luxury-container">
           <ClinicMap
-            heightClass="h-[300px] sm:h-[420px] lg:h-[560px]"
-            className="mb-12 lg:mb-16"
+            heightClass="h-[340px] sm:h-[440px] lg:h-[520px]"
+            className="mb-8"
           />
+
+          <div className="mb-12 grid gap-4 sm:grid-cols-3 lg:mb-16">
+            <div className="rounded-serenity-lg border border-luxury-accent/15 bg-luxury-bg p-5 text-center shadow-serenity">
+              <MapPin
+                size={22}
+                className="mx-auto text-luxury-accent"
+                strokeWidth={1.25}
+              />
+              <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-luxury-dark">
+                Dirección
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-luxury-text/80">
+                {CLINIC.address}, {CLINIC.city}
+              </p>
+            </div>
+
+            <div className="rounded-serenity-lg border border-luxury-accent/15 bg-luxury-bg p-5 text-center shadow-serenity">
+              <Clock
+                size={22}
+                className="mx-auto text-luxury-accent"
+                strokeWidth={1.25}
+              />
+              <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-luxury-dark">
+                Horario
+              </p>
+              <p className="mt-2 text-sm text-luxury-text/80">
+                Lun–Vie 9:00 – 19:00
+                <br />
+                Sáb 9:00 – 15:00
+              </p>
+            </div>
+
+            <div className="rounded-serenity-lg border border-luxury-accent/15 bg-luxury-bg p-5 text-center shadow-serenity">
+              <Phone
+                size={22}
+                className="mx-auto text-luxury-accent"
+                strokeWidth={1.25}
+              />
+              <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-luxury-dark">
+                Contacto
+              </p>
+              <a
+                href={`tel:${CLINIC.phoneE164}`}
+                className="mt-2 block text-sm text-luxury-text/80 transition-colors hover:text-luxury-accent"
+              >
+                {CLINIC.phone}
+              </a>
+            </div>
+          </div>
 
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center lg:order-2">

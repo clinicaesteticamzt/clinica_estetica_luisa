@@ -8,7 +8,7 @@ export default function TrustBar() {
     <section className="border-y border-luxury-accent/25 bg-luxury-dark">
       <div className="overflow-hidden py-5 md:py-6">
         <div
-          className="flex w-max animate-brand-marquee items-center motion-reduce:animate-none"
+          className="flex w-max animate-brand-marquee-slow items-center motion-reduce:animate-none"
           aria-label="Tratamientos disponibles en la clínica"
         >
           {MARQUEE_ITEMS.map((treatment, index) => (

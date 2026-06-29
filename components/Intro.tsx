@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Card3D from "@/components/Card3D";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const CLINIC_RECEPTION_IMAGE = "/fotos/clinica estetica.png";
 
@@ -11,7 +12,7 @@ export default function Intro() {
     <div className="overflow-hidden">
       <div className="luxury-container pb-6 pt-12 md:pb-10 md:pt-24 lg:pt-28">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-          <div className="relative lg:col-span-7 lg:pr-6">
+          <ScrollReveal className="relative lg:col-span-7 lg:pr-6" offset={72}>
             <div
               aria-hidden
               className="absolute -bottom-6 -right-4 -z-10 hidden h-[90%] w-[80%] rounded-serenity-lg bg-luxury-card transition-transform duration-700 ease-out lg:block xl:-right-8"
@@ -35,21 +36,25 @@ export default function Intro() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-luxury-dark/20 via-transparent to-luxury-bg/5" />
               </div>
             </Card3D>
-          </div>
+          </ScrollReveal>
 
-          <div className="lg:col-span-5 lg:py-8 xl:py-14">
+          <ScrollReveal
+            className="lg:col-span-5 lg:py-8 xl:py-14"
+            delay={0.15}
+            offset={56}
+          >
             <p className="section-label">Experiencia premium</p>
-            <h2 className="section-title mt-4 transition-opacity duration-700 ease-out">
+            <h2 className="section-title mt-4">
               Medicina estética de autoridad en el corazón de Mazatlán
             </h2>
-            <p className="mt-8 text-base leading-relaxed text-luxury-text/85 transition-opacity duration-700 ease-out sm:text-lg sm:leading-loose">
+            <p className="mt-8 text-base leading-relaxed text-luxury-text/85 sm:text-lg sm:leading-loose">
               En un espacio diseñado para transmitir calma y distinción, cada
               visita combina valoración médica rigurosa, tecnología certificada
               y acompañamiento cercano. Una experiencia boutique en la costa del
               Pacífico para quienes buscan resultados visibles con naturalidad y
               confianza.
             </p>
-            <p className="mt-6 text-base leading-relaxed text-luxury-text/85 transition-opacity duration-700 ease-out sm:text-lg sm:leading-loose">
+            <p className="mt-6 text-base leading-relaxed text-luxury-text/85 sm:text-lg sm:leading-loose">
               Nuestros protocolos se respaldan con un catálogo exclusivo de
               marcas dermatológicas de nivel internacional, seleccionadas por la
               Dra. Laura Simental por su eficacia clínica, seguridad y
@@ -70,7 +75,7 @@ export default function Intro() {
                 Ver catálogo de skincare
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </div>
