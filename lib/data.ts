@@ -12,7 +12,7 @@ export const CLINIC = {
   facebook: "https://www.facebook.com/ClinicaLauraSimental/",
   instagram: "https://www.instagram.com/clinica.laurasimental/",
   tiktok: "https://www.tiktok.com/@dra.laurasimental",
-  maps: "https://goo.gl/maps/ApTf1PD7jwPx3NNLa9",
+  maps: "https://maps.app.goo.gl/UKjCFHjayubyfMeG7",
   googleReviews:
     "https://www.google.com/search?q=opiniones+de+laura+simental&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_1sHcyHAK4mMj2Pn3_hbTzUzU2HemhihWNmQB1Ooa-3PBtl9NB5rv6FDToAd5nJvcmk79SUK3Ofbmz_VuntYN2f4TIUv1Yv5Ir4BTP2C6QP2nwUrlQ%3D%3D&sa=X&ved=2ahUKEwiz-6LNt6yVAxXHIkQIHWIfPN8Qk8gLegQIGxAB",
   ultherapy:

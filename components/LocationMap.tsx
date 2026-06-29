@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import ClinicMap from "@/components/ClinicMap";
 import PageHeader from "@/components/PageHeader";
 import { CLINIC } from "@/lib/data";
 
@@ -8,10 +9,6 @@ const HOURS = [
   { days: "Sábado", time: "9:00 AM – 3:00 PM" },
   { days: "Domingo", time: "Cerrado" },
 ];
-
-const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(
-  `${CLINIC.address}, ${CLINIC.city}, ${CLINIC.state}`
-)}&z=16&output=embed`;
 
 export default function LocationMap() {
   return (
@@ -22,21 +19,15 @@ export default function LocationMap() {
         description="Estamos ubicados en el corazón de Mazatlán, con fácil acceso y un espacio clínico diseñado para tu comodidad y tranquilidad."
       />
 
-      <section className="section-padding bg-luxury-bg">
+      <section className="section-padding bg-luxury-bg pt-0">
         <div className="luxury-container">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="overflow-hidden rounded-serenity-lg border border-luxury-accent/15 shadow-serenity">
-              <iframe
-                title={`Ubicación de ${CLINIC.name}`}
-                src={MAP_EMBED}
-                className="h-[280px] w-full sm:h-[420px] lg:h-[560px]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
+          <ClinicMap
+            heightClass="h-[300px] sm:h-[420px] lg:h-[560px]"
+            className="mb-12 lg:mb-16"
+          />
 
-            <div className="flex flex-col justify-center">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="flex flex-col justify-center lg:order-2">
               <div className="card-serenity bg-luxury-card p-8 md:p-10">
                 <h2 className="font-serif text-2xl text-luxury-dark">
                   Información de contacto
@@ -135,6 +126,33 @@ export default function LocationMap() {
                   Abrir en Google Maps
                   <ExternalLink size={16} />
                 </a>
+              </div>
+            </div>
+
+            <div className="lg:order-1">
+              <div className="card-serenity h-full bg-luxury-card p-8 md:p-10">
+                <h2 className="font-serif text-2xl text-luxury-dark">
+                  ¿Cómo llegar?
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-luxury-text/80">
+                  Nos encontramos en Plaza El Encanto, sobre Av. Carlos Canseco.
+                  Local 5A, en la zona de La Marina. Usa el mapa para obtener
+                  la ruta desde tu ubicación.
+                </p>
+                <ul className="mt-8 space-y-4 text-sm text-luxury-text/80">
+                  <li className="flex gap-3">
+                    <span className="font-medium text-luxury-dark">•</span>
+                    <span>Estacionamiento disponible en plaza</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="font-medium text-luxury-dark">•</span>
+                    <span>Zona céntrica de Mazatlán, fácil acceso en auto</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="font-medium text-luxury-dark">•</span>
+                    <span>Referencias: Mediterráneo Club Residencial</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

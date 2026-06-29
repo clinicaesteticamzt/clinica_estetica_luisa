@@ -8,6 +8,7 @@ import AboutStats from "@/components/AboutStats";
 import Process from "@/components/Process";
 import TechnologyHighlight from "@/components/TechnologyHighlight";
 import Reviews from "@/components/Reviews";
+import LocationSection from "@/components/LocationSection";
 import Marquee from "@/components/Marquee";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
@@ -73,6 +74,7 @@ export default function Home() {
         <Process />
         <TechnologyHighlight />
         <Reviews />
+        <LocationSection />
         <Marquee />
         <FAQ />
         <FinalCTA />
