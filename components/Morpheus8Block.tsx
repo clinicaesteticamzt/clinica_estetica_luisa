@@ -9,7 +9,6 @@ import {
   ChevronRight,
   Clock,
   Eye,
-  Footprints,
   Layers,
   ScanFace,
   ShieldCheck,
@@ -24,13 +23,13 @@ const YOUTUBE_ID = "U5-xQ1Qp3tA";
 
 const MEDIA = "/equipos/antes - despues";
 
-const TREATMENT_ZONES_IMAGE = `${MEDIA}/zonas de tratamiento.png`;
+const TREATMENT_ZONES_IMAGE = `${MEDIA}/zonas de tratamiento1.png`;
 
 const SPECS = [
   {
     label: "Tipo de tratamiento",
     value:
-      "Remodelación dérmica y subdérmica para áreas de precisión, facial y corporal",
+      "Remodelación dérmica y subdérmica para rostro, cuello y escote",
   },
   {
     label: "Número de pines",
@@ -41,7 +40,7 @@ const SPECS = [
     value: "Hasta 4 mm programables",
   },
   {
-    label: "Periorbital · Facial · Corporal",
+    label: "Periorbital · Facial · Cuello",
     value: "0.5 mm, 1 mm, 2 mm, 3 mm, 4 mm programables",
   },
   {
@@ -88,11 +87,11 @@ const BEFORE_TREATMENT =
   "Conviene suspender la exposición solar directa, el uso de autobronceadores y algunos fármacos que incrementen la sensibilidad de la piel. En la consulta inicial, el médico entregará las recomendaciones precisas para tu caso.";
 
 const TREATMENT_PROCESS =
-  "La primera etapa es una valoración médica que define el plan a seguir. Durante la sesión, finas microagujas alcanzan las capas profundas de la piel para reactivar la formación de colágeno y elastina. Se aplica anestesia local en crema para mayor bienestar; en pieles muy reactivas o en tratamientos corporales amplios, puede valorarse sedación. La aplicación suele ser ágil y la convalecencia corta: es habitual un rubor o leve hinchazón que cede en pocos días.";
+  "La primera etapa es una valoración médica que define el plan a seguir. Durante la sesión, finas microagujas alcanzan las capas profundas de la piel para reactivar la formación de colágeno y elastina. Se aplica anestesia local en crema para mayor bienestar; en pieles muy reactivas, puede valorarse un protocolo más suave. La aplicación suele ser ágil y la convalecencia corta: es habitual un rubor o leve hinchazón que cede en pocos días.";
 
 const SESSION_PROTOCOL = {
   recommendation:
-    "El esquema sugerido para resultados óptimos comprende 3 sesiones, con 4 a 6 semanas de separación en rostro y cuello, y de 6 a 8 semanas en el cuerpo.",
+    "El esquema sugerido para resultados óptimos comprende 3 sesiones, con 4 a 6 semanas de separación entre cada una en rostro, cuello y escote.",
   reasons: [
     "Cada aplicación activa la producción de colágeno y elastina, y los cambios se suman sesión tras sesión.",
     "Las pausas entre citas coinciden con el ritmo natural de regeneración y reparación cutánea.",
@@ -170,17 +169,6 @@ const TREATMENT_AREAS: {
     benefits:
       "Incrementa tonicidad y densidad cutánea; minimiza signos de fotoenvejecimiento",
   },
-  {
-    area: "Abdomen",
-    icon: ShieldCheck,
-    benefits: "Reafirma la piel y disminuye la apariencia de estrías",
-  },
-  {
-    area: "Muslos y glúteos",
-    icon: Footprints,
-    benefits:
-      "Suaviza irregularidades, refuerza la firmeza y mejora el aspecto de la celulitis",
-  },
 ];
 
 const HIGHLIGHTS = [
@@ -196,8 +184,8 @@ const HIGHLIGHTS = [
   },
   {
     icon: ScanFace,
-    title: "Facial y corporal",
-    text: "Aplicable en párpados, abdomen, muslos, glúteos y más",
+    title: "Facial y periorbital",
+    text: "Aplicable en rostro, cuello, escote, párpados y contorno mandibular",
   },
   {
     icon: Sparkles,
@@ -442,8 +430,8 @@ export default function Morpheus8Block() {
             </h2>
             <p className="mt-3 text-sm leading-snug text-luxury-text lg:mt-4 lg:text-[0.9rem] lg:leading-relaxed">
               Procedimiento de baja invasión que integra microneedling fraccionado
-              con radiofrecuencia para renovar y redefinir la piel del rostro y el
-              cuerpo. Reactiva colágeno y elastina con una convalecencia corta;
+              con radiofrecuencia para renovar y redefinir la piel del rostro,
+              cuello y escote. Reactiva colágeno y elastina con una convalecencia corta;
               indicado para flacidez, irregularidades de textura, marcas residuales
               y signos del paso del tiempo.
             </p>
@@ -529,9 +517,9 @@ export default function Morpheus8Block() {
                         </p>
                         <p>
                           Es un procedimiento seguro y muy efectivo para
-                          cualquier tono de piel: desde el contorno de ojos hasta
-                          zonas corporales como el abdomen, los muslos y los
-                          glúteos. Cada sesión se calibra a tu medida según tu
+                          cualquier tono de piel en rostro, cuello y escote:
+                          desde el contorno de ojos hasta la zona
+                          submentoniana. Cada sesión se calibra a tu medida según tu
                           edad, tipo de piel y los resultados que busques,
                           siempre después de una valoración médica.
                         </p>
@@ -556,14 +544,13 @@ export default function Morpheus8Block() {
                     <div className="mt-8 overflow-hidden rounded-serenity-lg border border-luxury-accent/20 bg-luxury-bg shadow-serenity">
                       <p className="p-6 text-sm leading-relaxed text-luxury-text sm:p-8">
                         Entre las zonas más demandadas están el rostro, el
-                        cuello, el abdomen, los muslos y los glúteos. En cada
-                        región se emplean ajustes precisos de profundidad y
-                        potencia energética.
+                        cuello y el escote. En cada región se emplean ajustes
+                        precisos de profundidad y potencia energética.
                       </p>
                       <div className="flex justify-center border-t border-luxury-accent/15 px-4 py-5 sm:px-8 sm:py-6">
                         <Image
                           src={TREATMENT_ZONES_IMAGE}
-                          alt="Mapa de zonas de tratamiento con Morpheus 8"
+                          alt="Mapa de zonas de tratamiento facial con Morpheus 8"
                           width={1312}
                           height={812}
                           className="h-auto w-full max-w-[17.5rem] sm:max-w-xs md:max-w-sm lg:max-w-md"
