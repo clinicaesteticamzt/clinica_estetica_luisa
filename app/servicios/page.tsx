@@ -15,7 +15,7 @@ export default function ServiciosPage() {
       <PageHeader
         label="Catálogo clínico"
         title="Nuestros Tratamientos"
-        description="Protocolos médicos diseñados para realzar tu belleza con resultados naturales. Explora nuestras tres áreas de especialidad y encuentra el tratamiento ideal para ti."
+        description="Protocolos médicos diseñados para realzar tu belleza con resultados naturales. Reserva y paga tus tratamientos en línea; el catálogo de productos en Tienda es únicamente informativo."
       />
       <Services />
     </SubpageLayout>

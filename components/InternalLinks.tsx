@@ -8,7 +8,7 @@ const PAGES = [
     label: "Servicios",
     title: "Nuestros tratamientos",
     description:
-      "Faciales médicos, medicina estética y protocolos corporales de alta gama.",
+      "Faciales médicos, medicina estética y protocolos de alta gama con reserva y pago en línea.",
     icon: Sparkles,
   },
   {
@@ -30,17 +30,17 @@ const PAGES = [
   {
     href: "/tienda",
     label: "Tienda",
-    title: "Skincare premium",
+    title: "Catálogo informativo",
     description:
-      "Productos dermatológicos seleccionados por la Dra. Laura Simental.",
+      "Productos dermatológicos recomendados en consulta. No se venden en línea.",
     icon: ShoppingBag,
   },
   {
     href: "/reservar",
     label: "Reservar",
-    title: "Agenda tu valoración",
+    title: "Reserva y pago en línea",
     description:
-      "Reserva en línea o consulta disponibilidad para tratamientos avanzados.",
+      "Agenda tu tratamiento y confirma con pago en línea desde la web.",
     icon: Calendar,
   },
 ];

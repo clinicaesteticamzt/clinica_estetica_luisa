@@ -137,7 +137,7 @@ function ReservarContent() {
 
     const msg = isHighEnd
       ? `Hola, soy ${nombre}. Solicito valoración para ${selectedService.name} en Clínica Dra. Laura Simental.\nTel: ${telefono}`
-      : `Hola, soy ${nombre}. Quiero agendar ${selectedService.name} el ${formatDateLong(selectedDate)} a las ${selectedTime}.\nTel: ${telefono}`;
+      : `Hola, soy ${nombre}. Deseo reservar y pagar en línea ${selectedService.name} el ${formatDateLong(selectedDate)} a las ${selectedTime}.\nTel: ${telefono}`;
 
     return whatsappUrl(msg);
   }
@@ -145,9 +145,9 @@ function ReservarContent() {
   return (
     <SubpageLayout showCta={false}>
       <PageHeader
-        label="Agenda rápida"
-        title="Reserva en segundos"
-        description="Elige tu tratamiento, horario y confirma por WhatsApp en pocos toques."
+        label="Reserva con pago en línea"
+        title="Reserva tu tratamiento"
+        description="Elige tu tratamiento, horario y datos de contacto. Los tratamientos se confirman con pago en línea; los protocolos que requieren valoración médica se coordinan por WhatsApp."
       />
 
       <section className="section-padding bg-luxury-bg pb-32">
@@ -295,7 +295,15 @@ function ReservarContent() {
 
             {serviceId && isHighEnd && (
               <div className="mb-8 rounded-serenity bg-luxury-card px-4 py-3 text-sm text-luxury-text">
-                Este tratamiento se confirma con nuestra asistente vía WhatsApp.
+                Este tratamiento requiere valoración médica previa. Te contactaremos
+                por WhatsApp para confirmar tu cita.
+              </div>
+            )}
+
+            {serviceId && !isHighEnd && (
+              <div className="mb-8 rounded-serenity bg-luxury-card px-4 py-3 text-sm text-luxury-text">
+                Al confirmar, coordinaremos el pago en línea de tu tratamiento para
+                apartar tu horario.
               </div>
             )}
 
@@ -372,10 +380,14 @@ function ReservarContent() {
                 type="button"
                 disabled={!readyForContact}
                 onClick={handleConfirm}
-                className="btn-pill inline-flex shrink-0 items-center gap-2 bg-[#25D366] text-white hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+                className={`btn-pill inline-flex shrink-0 items-center gap-2 disabled:cursor-not-allowed disabled:opacity-40 ${
+                  isHighEnd
+                    ? "bg-[#25D366] text-white hover:opacity-90"
+                    : "btn-pill-dark"
+                }`}
               >
-                <MessageCircle size={18} />
-                Confirmar
+                {isHighEnd ? <MessageCircle size={18} /> : null}
+                {isHighEnd ? "Solicitar valoración" : "Confirmar y pagar"}
               </button>
             </div>
           </div>

@@ -57,17 +57,29 @@ export default function Services() {
                   ))}
                 </ul>
               )}
-              <Link
-                href={`/reservar?categoria=${category.id}&servicio=${service.id}`}
-                className="btn-pill-outline mt-8 w-full text-center"
-              >
-                Solicitar información
-              </Link>
+              {service.requiresValidation ? (
+                <Link
+                  href={`/reservar?categoria=${category.id}&servicio=${service.id}`}
+                  className="btn-pill-outline mt-8 w-full text-center"
+                >
+                  Solicitar valoración
+                </Link>
+              ) : (
+                <Link
+                  href={`/reservar?categoria=${category.id}&servicio=${service.id}`}
+                  className="btn-pill-dark mt-8 w-full text-center"
+                >
+                  Reservar y pagar en línea
+                </Link>
+              )}
             </article>
           ))}
         </div>
 
-        <p className="mt-16 text-center text-sm tracking-wide text-luxury-text/70">
+        <p className="mt-16 text-center text-sm leading-relaxed text-luxury-text/70">
+          Los tratamientos se reservan y pagan en línea. El catálogo de skincare en
+          Tienda es solo informativo.
+          <br />
           {CLINIC.phone} · {CLINIC.address}, {CLINIC.city}
         </p>
       </div>

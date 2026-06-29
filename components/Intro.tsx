@@ -67,7 +67,7 @@ export default function Intro() {
                 href="/tienda"
                 className="btn-pill-outline transition-all duration-500 ease-out"
               >
-                Ver skincare premium
+                Ver catálogo de skincare
               </Link>
             </div>
           </div>
