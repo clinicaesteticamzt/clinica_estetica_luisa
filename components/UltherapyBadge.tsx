@@ -14,7 +14,7 @@ export default function UltherapyBadge({ variant = "featured" }: UltherapyBadgeP
         href={CLINIC.ultherapy}
         target="_blank"
         rel="noopener noreferrer"
-        className="group mx-auto flex w-full max-w-3xl items-center gap-5 rounded-serenity-lg border border-luxury-accent/35 bg-luxury-dark px-5 py-5 shadow-float transition-all duration-500 hover:border-luxury-accent/55 hover:shadow-serenity-lg sm:gap-8 sm:px-8 sm:py-6"
+        className="group mx-auto flex w-full max-w-3xl items-center gap-5 rounded-serenity-lg border border-luxury-accent/40 bg-white/5 px-5 py-5 shadow-float transition-all duration-500 hover:border-luxury-accent/60 hover:bg-white/[0.08] hover:shadow-serenity-lg sm:gap-8 sm:px-8 sm:py-6"
       >
         <div className="relative h-20 w-20 shrink-0 sm:h-24 sm:w-24">
           <Image

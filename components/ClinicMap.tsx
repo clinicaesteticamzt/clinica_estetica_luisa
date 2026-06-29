@@ -1,7 +1,5 @@
 import { ExternalLink, MapPin, Navigation } from "lucide-react";
-import { CLINIC } from "@/lib/data";
-
-const MAP_EMBED = `https://www.google.com/maps?q=${CLINIC.geo.latitude},${CLINIC.geo.longitude}&hl=es&z=17&output=embed`;
+import { CLINIC, CLINIC_MAP_EMBED_URL } from "@/lib/data";
 
 type ClinicMapProps = {
   className?: string;
@@ -20,7 +18,7 @@ export default function ClinicMap({
     >
       <iframe
         title={`Ubicación de ${CLINIC.name}`}
-        src={MAP_EMBED}
+        src={CLINIC_MAP_EMBED_URL}
         className={`w-full ${heightClass}`}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"

@@ -11,6 +11,7 @@ import {
   ALL_SERVICES,
   AVAILABLE_TIMES,
   CLINIC,
+  formatPriceMXN,
   HIGH_END_SERVICE_IDS,
   SERVICE_CATEGORIES,
   whatsappUrl,
@@ -33,6 +34,7 @@ function ReservarContent() {
   const [showAllServices, setShowAllServices] = useState(false);
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState<"clinic" | "online">("clinic");
   const [confirmed, setConfirmed] = useState(false);
 
   useEffect(() => {
@@ -92,6 +94,7 @@ function ReservarContent() {
     setSelectedDate("");
     setSelectedTime("");
     setShowAllServices(false);
+    setPaymentMethod("clinic");
     setConfirmed(false);
   }
 
@@ -100,6 +103,7 @@ function ReservarContent() {
     setServiceId(id);
     setSelectedDate("");
     setSelectedTime("");
+    setPaymentMethod("clinic");
     setConfirmed(false);
 
     const highEnd = HIGH_END_SERVICE_IDS.has(id);
@@ -136,8 +140,8 @@ function ReservarContent() {
     if (!selectedService) return whatsappUrl("Hola, quiero agendar una cita.");
 
     const msg = isHighEnd
-      ? `Hola, soy ${nombre}. Solicito valoración para ${selectedService.name} en Clínica Dra. Laura Simental.\nTel: ${telefono}`
-      : `Hola, soy ${nombre}. Deseo reservar y pagar en línea ${selectedService.name} el ${formatDateLong(selectedDate)} a las ${selectedTime}.\nTel: ${telefono}`;
+      ? `Hola, soy ${nombre}. Solicito valoración para ${selectedService.name} (${formatPriceMXN(selectedService.price, { from: selectedService.priceFrom })} estimado) en Clínica Dra. Laura Simental.\nTel: ${telefono}`
+      : `Hola, soy ${nombre}. Deseo reservar ${selectedService.name} el ${formatDateLong(selectedDate)} a las ${selectedTime}.\nPrecio referencia: ${formatPriceMXN(selectedService.price, { from: selectedService.priceFrom })}\nPago: ${paymentMethod === "online" ? "en línea" : "en clínica"}\nTel: ${telefono}`;
 
     return whatsappUrl(msg);
   }
@@ -145,9 +149,9 @@ function ReservarContent() {
   return (
     <SubpageLayout showCta={false}>
       <PageHeader
-        label="Reserva con pago en línea"
+        label="Reserva tu cita"
         title="Reserva tu tratamiento"
-        description="Elige tu tratamiento, horario y datos de contacto. Los tratamientos se confirman con pago en línea; los protocolos que requieren valoración médica se coordinan por WhatsApp."
+        description="Elige tratamiento, horario y forma de pago. Puedes reservar sin pagar ahora y abonar en clínica, o indicar pago en línea al confirmar."
       />
 
       <section className="section-padding bg-luxury-bg pb-36 sm:pb-32">
@@ -248,6 +252,22 @@ function ReservarContent() {
               )}
             </section>
 
+            {serviceId && selectedService && (
+              <div className="mb-8 rounded-serenity border border-luxury-accent/20 bg-luxury-card px-4 py-4">
+                <p className="text-sm font-medium text-luxury-dark">
+                  {selectedService.name}
+                </p>
+                <p className="mt-1 font-serif text-xl text-luxury-accent">
+                  {formatPriceMXN(selectedService.price, {
+                    from: selectedService.priceFrom,
+                  })}
+                </p>
+                <p className="mt-1 text-xs text-luxury-text/60">
+                  Precio estimado de referencia
+                </p>
+              </div>
+            )}
+
             {serviceId && !isHighEnd && (
               <section ref={scheduleRef} className="mb-8 scroll-mt-28 scroll-mb-28">
                 <p className="section-label">¿Cuándo te conviene?</p>
@@ -302,9 +322,45 @@ function ReservarContent() {
 
             {serviceId && !isHighEnd && (
               <div className="mb-8 rounded-serenity bg-luxury-card px-4 py-3 text-sm text-luxury-text">
-                Al confirmar, coordinaremos el pago en línea de tu tratamiento para
-                apartar tu horario.
+                El pago es opcional al reservar. Puedes pagar en la clínica el día
+                de tu cita o elegir pago en línea al confirmar.
               </div>
+            )}
+
+            {serviceId && !isHighEnd && selectedDate && selectedTime && (
+              <section className="mb-8">
+                <p className="section-label">Forma de pago</p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod("clinic")}
+                    className={`rounded-serenity border px-4 py-3 text-left text-sm transition-all duration-300 ${
+                      paymentMethod === "clinic"
+                        ? "border-luxury-dark bg-luxury-dark text-luxury-bg"
+                        : "border-luxury-accent/30 text-luxury-text hover:border-luxury-accent"
+                    }`}
+                  >
+                    <span className="block font-medium">Pagar en clínica</span>
+                    <span className="mt-1 block text-xs opacity-80">
+                      Reserva ahora y paga el día de tu cita
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod("online")}
+                    className={`rounded-serenity border px-4 py-3 text-left text-sm transition-all duration-300 ${
+                      paymentMethod === "online"
+                        ? "border-luxury-dark bg-luxury-dark text-luxury-bg"
+                        : "border-luxury-accent/30 text-luxury-text hover:border-luxury-accent"
+                    }`}
+                  >
+                    <span className="block font-medium">Pagar en línea</span>
+                    <span className="mt-1 block text-xs opacity-80">
+                      Coordinamos el pago al confirmar por WhatsApp
+                    </span>
+                  </button>
+                </div>
+              </section>
             )}
 
             {serviceId && (isHighEnd || (selectedDate && selectedTime)) && (
@@ -370,9 +426,17 @@ function ReservarContent() {
                 <p className="truncate font-medium text-luxury-dark">
                   {selectedService?.name.split("(")[0].trim()}
                 </p>
+                {selectedService && (
+                  <p className="truncate text-xs text-luxury-accent">
+                    {formatPriceMXN(selectedService.price, {
+                      from: selectedService.priceFrom,
+                    })}
+                  </p>
+                )}
                 {!isHighEnd && selectedDate && selectedTime && (
                   <p className="truncate text-xs text-luxury-text/70">
                     {formatDateLong(selectedDate)} · {selectedTime}
+                    {paymentMethod === "online" ? " · Pago en línea" : " · Pago en clínica"}
                   </p>
                 )}
               </div>
@@ -391,7 +455,7 @@ function ReservarContent() {
                   {isHighEnd ? "Valoración" : "Confirmar"}
                 </span>
                 <span className="hidden sm:inline">
-                  {isHighEnd ? "Solicitar valoración" : "Confirmar y pagar"}
+                  {isHighEnd ? "Solicitar valoración" : "Confirmar reserva"}
                 </span>
               </button>
             </div>

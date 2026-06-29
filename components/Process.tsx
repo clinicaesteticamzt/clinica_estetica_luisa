@@ -18,8 +18,7 @@ const STEPS = [
     title: "Resultados naturales",
     description:
       "Disfruta tratamientos con tecnología de punta y seguimiento clínico continuo.",
-    image:
-      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=300&fit=crop",
+    image: "/fotos/resultados naturales.webp",
   },
 ];
 

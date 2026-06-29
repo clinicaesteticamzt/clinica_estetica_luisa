@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CLINIC, SERVICE_CATEGORIES } from "@/lib/data";
+import { CLINIC, formatPriceMXN, SERVICE_CATEGORIES } from "@/lib/data";
 
 export default function Services() {
   const [activeTab, setActiveTab] = useState(0);
@@ -57,28 +57,31 @@ export default function Services() {
                   ))}
                 </ul>
               )}
-              {service.requiresValidation ? (
-                <Link
-                  href={`/reservar?categoria=${category.id}&servicio=${service.id}`}
-                  className="btn-pill-outline mt-8 w-full text-center"
-                >
-                  Solicitar valoración
-                </Link>
-              ) : (
-                <Link
-                  href={`/reservar?categoria=${category.id}&servicio=${service.id}`}
-                  className="btn-pill-dark mt-8 w-full text-center"
-                >
-                  Reservar y pagar en línea
-                </Link>
+              <p className="mt-5 font-serif text-2xl text-luxury-dark">
+                {formatPriceMXN(service.price, { from: service.priceFrom })}
+              </p>
+              {service.priceFrom && (
+                <p className="mt-1 text-xs text-luxury-text/60">
+                  Precio estimado según zona y protocolo
+                </p>
               )}
+              <Link
+                href={`/reservar?categoria=${category.id}&servicio=${service.id}`}
+                className={
+                  service.requiresValidation
+                    ? "btn-pill-outline mt-6 w-full text-center"
+                    : "btn-pill-dark mt-6 w-full text-center"
+                }
+              >
+                {service.requiresValidation ? "Solicitar valoración" : "Reservar cita"}
+              </Link>
             </article>
           ))}
         </div>
 
         <p className="mt-16 break-words text-center text-sm leading-relaxed text-luxury-text/70">
-          Los tratamientos se reservan y pagan en línea. El catálogo de skincare en
-          Tienda es solo informativo.
+          Puedes reservar tu tratamiento y pagar en línea o directamente en la
+          clínica. El catálogo de skincare en Tienda es solo informativo.
           <br className="hidden sm:inline" />
           <span className="mt-2 block sm:mt-0 sm:inline">
             {CLINIC.phone} · {CLINIC.address}, {CLINIC.city}

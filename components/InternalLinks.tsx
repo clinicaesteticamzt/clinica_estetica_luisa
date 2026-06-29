@@ -8,7 +8,7 @@ const PAGES = [
     label: "Servicios",
     title: "Nuestros tratamientos",
     description:
-      "Faciales médicos, medicina estética y protocolos de alta gama con reserva y pago en línea.",
+      "Faciales médicos, medicina estética y protocolos de alta gama con precios de referencia.",
     icon: Sparkles,
   },
   {
@@ -38,9 +38,9 @@ const PAGES = [
   {
     href: "/reservar",
     label: "Reservar",
-    title: "Reserva y pago en línea",
+    title: "Reserva tu cita",
     description:
-      "Agenda tu tratamiento y confirma con pago en línea desde la web.",
+      "Agenda tu tratamiento y elige pagar en clínica o en línea al confirmar.",
     icon: Calendar,
   },
 ];

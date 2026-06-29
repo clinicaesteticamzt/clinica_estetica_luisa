@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 
 import SocialIcon from "@/components/SocialIcon";
@@ -86,23 +87,13 @@ export default function TopBar() {
 
 
 
-        <a
-
-          href={CLINIC.maps}
-
-          target="_blank"
-
-          rel="noopener noreferrer"
-
+        <Link
+          href="/ubicacion"
           className="hidden items-center gap-1.5 transition-colors hover:text-luxury-dark md:inline-flex"
-
         >
-
           <MapPin size={13} strokeWidth={1.75} className="text-luxury-dark" />
-
           <span>Ubicación</span>
-
-        </a>
+        </Link>
 
       </div>
 

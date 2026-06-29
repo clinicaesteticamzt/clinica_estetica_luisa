@@ -1,3 +1,10 @@
+export const CLINIC_LOCATION_QUERY =
+  "Clínica Dra. Laura Simental, Av. Carlos Canseco #6046 Local 5A, Plaza El Encanto, Mazatlán, Sinaloa 82124, México";
+
+export const CLINIC_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC_LOCATION_QUERY)}`;
+
+export const CLINIC_MAP_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(CLINIC_LOCATION_QUERY)}&hl=es&z=16&output=embed`;
+
 export const CLINIC = {
   name: "Clínica Dra. Laura Simental",
   fullName: "Clínica de Medicina Estética Dra. Laura Simental",
@@ -12,7 +19,7 @@ export const CLINIC = {
   facebook: "https://www.facebook.com/ClinicaLauraSimental/",
   instagram: "https://www.instagram.com/clinica.laurasimental/",
   tiktok: "https://www.tiktok.com/@dra.laurasimental",
-  maps: "https://maps.app.goo.gl/UKjCFHjayubyfMeG7",
+  maps: CLINIC_MAPS_URL,
   googleReviews:
     "https://www.google.com/search?q=opiniones+de+laura+simental&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_1sHcyHAK4mMj2Pn3_hbTzUzU2HemhihWNmQB1Ooa-3PBtl9NB5rv6FDToAd5nJvcmk79SUK3Ofbmz_VuntYN2f4TIUv1Yv5Ir4BTP2C6QP2nwUrlQ%3D%3D&sa=X&ved=2ahUKEwiz-6LNt6yVAxXHIkQIHWIfPN8Qk8gLegQIGxAB",
   ultherapy:
@@ -33,9 +40,20 @@ export type ServiceItem = {
   id: string;
   name: string;
   description: string;
+  price: number;
+  priceFrom?: boolean;
   requiresValidation?: boolean;
   subItems?: string[];
 };
+
+export function formatPriceMXN(amount: number, options?: { from?: boolean }) {
+  const formatted = new Intl.NumberFormat("es-MX", {
+    style: "currency",
+    currency: "MXN",
+    maximumFractionDigits: 0,
+  }).format(amount);
+  return options?.from ? `Desde ${formatted}` : formatted;
+}
 
 export type ServiceCategory = {
   id: string;
@@ -57,18 +75,22 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Diamond Glow",
         description:
           "Limpieza e hidratación profunda mediante rejuvenecimiento dérmico simultáneo con infusión de sueros especializados.",
+        price: 2200,
       },
       {
         id: "geneo",
         name: "Geneo",
         description:
           "Facial antiedad premium que combina oxigenación natural, exfoliación suave y absorción profunda de nutrientes activos.",
+        price: 2800,
       },
       {
         id: "morpheus-8-facial",
         name: "Morpheus 8 (Facial)",
         description:
           "Radiofrecuencia fraccionada de vanguardia para tensado cutáneo, tratamiento de flacidez y renovación de las capas profundas de la piel.",
+        price: 8500,
+        priceFrom: true,
         requiresValidation: true,
       },
       {
@@ -76,36 +98,42 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Nanopore",
         description:
           "Sistema de micropunción eléctrica de alta precisión para inducir colágeno y tratar imperfecciones epidérmicas.",
+        price: 1800,
       },
       {
         id: "mesojet",
         name: "Mesojet",
         description:
           "Mesoterapia avanzada y rejuvenecimiento cutáneo mediante tecnología de aplicación transdérmica sin agujas.",
+        price: 1600,
       },
       {
         id: "skinbooster",
         name: "Skinbooster",
         description:
           "Microinyecciones de hidratación profunda para restaurar la elasticidad, luminosidad y firmeza natural de la piel.",
+        price: 3200,
       },
       {
         id: "camara-diagnostico",
         name: "Cámara de Diagnóstico",
         description:
           "Análisis digital avanzado de la piel para evaluar niveles de hidratación, manchas, arrugas y poros de forma personalizada.",
+        price: 900,
       },
       {
         id: "radiofrecuencia",
         name: "Radiofrecuencia",
         description:
           "Terapia térmica no invasiva para estimular la producción de colágeno y mejorar la firmeza del rostro.",
+        price: 1500,
       },
       {
         id: "exoxomas",
         name: "Exoxomas",
         description:
           "Tratamiento de revitalización celular avanzada utilizando vesículas para acelerar la regeneración cutánea.",
+        price: 3500,
       },
     ],
   },
@@ -120,11 +148,15 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Toxina Botulínica (Botox / Xeomeen / Dysport)",
         description:
           "Aplicación médica especializada para suavizar y prevenir líneas de expresión dinámicas en el rostro.",
+        price: 3800,
+        priceFrom: true,
       },
       {
         id: "acido-hialuronico",
         name: "Ácido Hialurónico Avanzado",
         description: "Rellenos e hidratación de grado médico enfocados en:",
+        price: 4500,
+        priceFrom: true,
         subItems: [
           "Aumento y perfilado de labios",
           "Corrección clínica de ojeras",
@@ -138,6 +170,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Estimuladores de Colágeno y Tensores",
         description:
           "Tratamientos de bioestimulación avanzada para recuperar el soporte estructural del rostro:",
+        price: 7500,
+        priceFrom: true,
         subItems: [
           "Radiesse / Ellansé / Sculptra / Hilos Tensores / Lifting Clínico",
         ],
@@ -147,11 +181,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Profhilo",
         description:
           "Bioremodelación e hidratación profunda inyectable para combatir la laxitud de la piel.",
+        price: 5500,
       },
       {
         id: "tratamientos-especializados",
         name: "Tratamientos Especializados",
         description: "Protocolos médicos personalizados:",
+        price: 5000,
+        priceFrom: true,
         subItems: [
           "Control Avanzado de Manchas: Lumecca (IPL), Peelings Químicos y Cosmelan",
           "Clínica Capilar: Micropunción, Dercut, Exoxomas, Dutas y Células Madre",
@@ -170,6 +207,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Morpheus 8 Corporal",
         description:
           "Radiofrecuencia fraccionada profunda diseñada específicamente para combatir la flacidez extrema, celulitis y grasa localizada en el cuerpo.",
+        price: 12000,
+        priceFrom: true,
         requiresValidation: true,
       },
       {
@@ -177,6 +216,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Alma Prime X",
         description:
           "Plataforma médica premium de contorneo corporal que combina ultrasonido y radiofrecuencia para moldear y reducir celulitis de forma no invasiva.",
+        price: 9500,
+        priceFrom: true,
         requiresValidation: true,
       },
       {
@@ -184,30 +225,36 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         name: "Geneo Corporal",
         description:
           "Tratamiento de exfoliación, oxigenación y nutrición profunda adaptado para renovar e igualar el tono de la piel en áreas corporales.",
+        price: 3000,
       },
       {
         id: "depilacion-diodo",
         name: "Depilación de Diodo",
         description:
           "Tecnología láser avanzada para la eliminación permanente del vello de forma segura en todas las áreas del cuerpo.",
+        price: 1200,
+        priceFrom: true,
       },
       {
         id: "carboxiterapia",
         name: "Carboxiterapia",
         description:
           "Aplicación subcutánea de dióxido de carbono medicinal para mejorar la microcirculación y combatir grasa localizada y celulitis.",
+        price: 1800,
       },
       {
         id: "enzimas-recombinantes",
         name: "Enzimas Recombinantes",
         description:
           "Microinyecciones enzimáticas altamente efectivas para la reducción de grasa localizada, fibrosis y flacidez.",
+        price: 2800,
       },
       {
         id: "mesoterapia-corporal",
         name: "Mesoterapia Corporal",
         description:
           "Microdosis de sustancias terapéuticas aplicadas directamente en zonas específicas para moldear y reafirmar.",
+        price: 2200,
       },
     ],
   },
