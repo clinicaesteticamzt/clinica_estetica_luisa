@@ -6,7 +6,7 @@ import { Check, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 
-const YOUTUBE_ID = "7gyiV0S8fSU";
+const YOUTUBE_ID = "L_R9SAQUe30";
 
 const DETAILS = [
   "Tecnología InMode con pulsos de luz optimizados",
@@ -113,12 +113,12 @@ export default function LumeccaBlock() {
           </button>
         </div>
 
-        <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-serenity-lg border border-luxury-accent/15 bg-luxury-dark shadow-serenity lg:order-2">
+        <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-serenity-lg border border-luxury-accent/15 shadow-serenity lg:order-2">
           <Image
             src="/equipos/lumecca.png"
             alt="Equipo Lumecca InMode"
             fill
-            className="object-contain object-center"
+            className="object-cover object-center"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>

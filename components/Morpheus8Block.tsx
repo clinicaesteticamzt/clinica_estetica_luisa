@@ -430,31 +430,29 @@ export default function Morpheus8Block() {
         </div>
 
         <div className="order-1 lg:order-2">
-          <div className="flex flex-col lg:aspect-[4/3] lg:min-h-0">
-            <div className="shrink-0">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-luxury-accent">
-                Radiofrecuencia fraccionada de última generación
-              </p>
-              <h2
-                ref={titleRef}
-                className="mt-2 scroll-mt-28 font-serif text-3xl text-luxury-dark md:scroll-mt-32 md:text-4xl"
-              >
-                Morpheus 8
-              </h2>
-              <p className="mt-3 text-sm leading-snug text-luxury-text lg:mt-4 lg:text-[0.9rem] lg:leading-relaxed">
-                Procedimiento de baja invasión que integra microneedling fraccionado
-                con radiofrecuencia para renovar y redefinir la piel del rostro y el
-                cuerpo. Reactiva colágeno y elastina con una convalecencia corta;
-                indicado para flacidez, irregularidades de textura, marcas residuales
-                y signos del paso del tiempo.
-              </p>
-            </div>
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-luxury-accent">
+              Radiofrecuencia fraccionada de última generación
+            </p>
+            <h2
+              ref={titleRef}
+              className="mt-2 scroll-mt-28 font-serif text-3xl text-luxury-dark md:scroll-mt-32 md:text-4xl"
+            >
+              Morpheus 8
+            </h2>
+            <p className="mt-3 text-sm leading-snug text-luxury-text lg:mt-4 lg:text-[0.9rem] lg:leading-relaxed">
+              Procedimiento de baja invasión que integra microneedling fraccionado
+              con radiofrecuencia para renovar y redefinir la piel del rostro y el
+              cuerpo. Reactiva colágeno y elastina con una convalecencia corta;
+              indicado para flacidez, irregularidades de textura, marcas residuales
+              y signos del paso del tiempo.
+            </p>
 
-            <ul className="mt-4 grid flex-1 auto-rows-fr gap-2 sm:grid-cols-2 lg:mt-5 lg:gap-2.5">
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:mt-5 lg:gap-2.5">
               {HIGHLIGHTS.map(({ icon: Icon, title, text }) => (
                 <li
                   key={title}
-                  className="flex h-full gap-2.5 rounded-serenity-lg border border-luxury-accent/15 bg-luxury-card/90 p-3"
+                  className="flex gap-2.5 rounded-serenity-lg border border-luxury-accent/15 bg-luxury-card/90 p-3"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-luxury-dark/5 text-luxury-accent">
                     <Icon size={16} strokeWidth={1.75} />
@@ -476,7 +474,7 @@ export default function Morpheus8Block() {
             type="button"
             onClick={() => setExpanded((open) => !open)}
             aria-expanded={expanded}
-            className="btn-pill-outline mt-6 inline-flex items-center gap-2 lg:mt-8"
+            className="btn-pill-outline relative z-10 mt-8 inline-flex items-center gap-2"
           >
             {expanded ? "Menos información" : "Más información"}
             <ChevronDown

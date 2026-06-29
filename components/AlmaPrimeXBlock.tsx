@@ -95,12 +95,12 @@ export default function AlmaPrimeXBlock() {
   return (
     <article>
       <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
-        <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-serenity-lg border border-luxury-accent/15 bg-luxury-dark shadow-serenity lg:order-1">
+        <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-serenity-lg border border-luxury-accent/15 shadow-serenity lg:order-1">
           <Image
             src="/equipos/Alma Primex1.png"
             alt="Equipo Alma Prime X"
             fill
-            className="object-contain object-center"
+            className="object-cover object-center"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
