@@ -82,31 +82,14 @@ export default function Technology({ variant = "section" }: TechnologyProps) {
                 index % 2 === 0 ? "lg:[&>div:first-child]:order-2" : ""
               }`}
             >
-              <div
-                className={`overflow-hidden rounded-serenity-lg border border-luxury-accent/15 shadow-serenity ${
-                  "imageWidth" in tech && tech.imageWidth
-                    ? "bg-white"
-                    : "relative aspect-[4/3]"
-                }`}
-              >
-                {"imageWidth" in tech && tech.imageWidth && tech.imageHeight ? (
-                  <Image
-                    src={tech.image}
-                    alt={tech.name}
-                    width={tech.imageWidth}
-                    height={tech.imageHeight}
-                    className="h-auto w-full"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                ) : (
-                  <Image
-                    src={tech.image}
-                    alt={tech.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                )}
+              <div className="relative aspect-[4/3] overflow-hidden rounded-serenity-lg border border-luxury-accent/15 shadow-serenity">
+                <Image
+                  src={tech.image}
+                  alt={tech.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
 
               <div>
