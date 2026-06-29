@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 const YOUTUBE_ID = "RgnhcMUERIw";
 
@@ -94,12 +95,12 @@ export default function AlmaPrimeXBlock() {
   return (
     <article>
       <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
-        <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-serenity-lg border border-luxury-accent/15 shadow-serenity lg:order-1">
+        <div className="relative order-2 aspect-[4/3] w-full overflow-hidden rounded-serenity-lg border border-luxury-accent/15 bg-luxury-dark shadow-serenity lg:order-1">
           <Image
             src="/equipos/Alma Primex1.png"
             alt="Equipo Alma Prime X"
             fill
-            className="object-cover object-center"
+            className="object-contain object-center"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
@@ -201,16 +202,10 @@ export default function AlmaPrimeXBlock() {
                       </div>
 
                       <div className="flex justify-center border-t border-luxury-accent/15 px-6 py-6 sm:px-8 sm:py-8">
-                        <div className="relative aspect-video w-full max-w-2xl overflow-hidden rounded-serenity-lg border border-luxury-accent/20 shadow-serenity">
-                          <iframe
-                            src={`https://www.youtube.com/embed/${YOUTUBE_ID}`}
-                            title="Video sobre Alma PrimeX"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                            loading="lazy"
-                            className="absolute inset-0 h-full w-full"
-                          />
-                        </div>
+                        <YouTubeEmbed
+                          videoId={YOUTUBE_ID}
+                          title="Video sobre Alma PrimeX"
+                        />
                       </div>
                     </div>
                   </section>

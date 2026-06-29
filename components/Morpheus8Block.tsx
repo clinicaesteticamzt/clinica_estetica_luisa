@@ -18,6 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 const YOUTUBE_ID = "U5-xQ1Qp3tA";
 
@@ -544,16 +545,10 @@ export default function Morpheus8Block() {
                         </div>
                       </div>
                       <div className="flex justify-center border-t border-luxury-accent/15 px-6 py-6 sm:px-8 sm:py-8">
-                        <div className="relative aspect-video w-full max-w-2xl overflow-hidden rounded-serenity-lg border border-luxury-accent/20 shadow-serenity">
-                          <iframe
-                            src={`https://www.youtube.com/embed/${YOUTUBE_ID}`}
-                            title="Video sobre Morpheus 8"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                            loading="lazy"
-                            className="absolute inset-0 h-full w-full"
-                          />
-                        </div>
+                        <YouTubeEmbed
+                          videoId={YOUTUBE_ID}
+                          title="Video sobre Morpheus 8"
+                        />
                       </div>
                     </div>
                   </section>
