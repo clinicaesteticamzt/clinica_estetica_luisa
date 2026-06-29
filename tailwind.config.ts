@@ -36,6 +36,7 @@ const config: Config = {
         "brand-marquee": "brand-marquee 50s linear infinite",
         "brand-marquee-slow": "brand-marquee 65s linear infinite",
         "brand-marquee-ultra": "brand-marquee 85s linear infinite",
+        "reviews-marquee": "reviews-marquee 140s linear infinite",
       },
       keyframes: {
         marquee: {
@@ -43,6 +44,10 @@ const config: Config = {
           "100%": { transform: "translateX(-50%)" },
         },
         "brand-marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "reviews-marquee": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },

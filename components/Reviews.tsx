@@ -1,12 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import { CLINIC, GOOGLE_REVIEWS, type GoogleReview } from "@/lib/data";
 
 const { reviews: TESTIMONIALS, rating, count } = GOOGLE_REVIEWS;
 
-const CAROUSEL_INTERVAL_MS = 5500;
+const MARQUEE_ITEMS = [...TESTIMONIALS, ...TESTIMONIALS];
 
 function reviewInitials(name: string) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -16,46 +13,7 @@ function reviewInitials(name: string) {
   return name.charAt(0).toUpperCase();
 }
 
-function getVisibleReviews(start: number, visible: number) {
-  return Array.from(
-    { length: visible },
-    (_, index) => TESTIMONIALS[(start + index) % TESTIMONIALS.length],
-  );
-}
-
 export default function Reviews() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(1);
-
-  useEffect(() => {
-    const updateVisible = () => {
-      if (window.matchMedia("(min-width: 1024px)").matches) {
-        setVisibleCount(6);
-      } else if (window.matchMedia("(min-width: 640px)").matches) {
-        setVisibleCount(2);
-      } else {
-        setVisibleCount(1);
-      }
-    };
-
-    updateVisible();
-    window.addEventListener("resize", updateVisible);
-    return () => window.removeEventListener("resize", updateVisible);
-  }, []);
-
-  useEffect(() => {
-    if (paused) return;
-
-    const id = window.setInterval(() => {
-      setActive((current) => (current + 1) % TESTIMONIALS.length);
-    }, CAROUSEL_INTERVAL_MS);
-
-    return () => window.clearInterval(id);
-  }, [paused]);
-
-  const visibleReviews = getVisibleReviews(active, visibleCount);
-
   return (
     <section className="section-padding bg-luxury-dark">
       <div className="luxury-container">
@@ -80,38 +38,16 @@ export default function Reviews() {
           </h2>
         </div>
 
-        <div
-          className="mx-auto max-w-6xl"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocusCapture={() => setPaused(true)}
-          onBlurCapture={() => setPaused(false)}
-        >
-          <div
-            key={`${active}-${visibleCount}`}
-            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {visibleReviews.map((testimonial, index) => (
+        <div className="relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-luxury-dark to-transparent sm:w-16" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-luxury-dark to-transparent sm:w-16" />
+
+          <div className="flex w-max animate-reviews-marquee gap-5 hover:[animation-play-state:paused]">
+            {MARQUEE_ITEMS.map((testimonial, index) => (
               <TestimonialCard
                 key={`${testimonial.id}-${index}`}
                 testimonial={testimonial}
-              />
-            ))}
-          </div>
-
-          <div className="mt-8 flex justify-center gap-2.5">
-            {TESTIMONIALS.map((review, index) => (
-              <button
-                key={review.id}
-                type="button"
-                onClick={() => setActive(index)}
-                aria-label={`Ver opinión de ${review.name}`}
-                aria-current={index === active}
-                className={`h-2.5 rounded-full transition-all ${
-                  index === active
-                    ? "w-8 bg-luxury-accent"
-                    : "w-2.5 bg-luxury-bg/30 hover:bg-luxury-bg/50"
-                }`}
+                duplicate={index >= TESTIMONIALS.length}
               />
             ))}
           </div>
@@ -132,9 +68,18 @@ export default function Reviews() {
   );
 }
 
-function TestimonialCard({ testimonial: t }: { testimonial: GoogleReview }) {
+function TestimonialCard({
+  testimonial: t,
+  duplicate = false,
+}: {
+  testimonial: GoogleReview;
+  duplicate?: boolean;
+}) {
   return (
-    <article className="flex h-full flex-col rounded-serenity-lg bg-luxury-bg p-6 shadow-serenity sm:p-7 md:p-8">
+    <article
+      aria-hidden={duplicate || undefined}
+      className="flex w-[min(85vw,320px)] shrink-0 flex-col rounded-serenity-lg bg-luxury-bg p-6 shadow-serenity sm:w-[340px] sm:p-7"
+    >
       <div className="mb-4 flex gap-0.5">
         {Array.from({ length: t.rating }).map((_, i) => (
           <Star
