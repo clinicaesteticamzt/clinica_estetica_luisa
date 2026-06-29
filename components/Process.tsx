@@ -12,8 +12,7 @@ const STEPS = [
     title: "Sesión personalizada",
     description:
       "La Dra. Laura evalúa tu piel y diseña un protocolo médico adaptado a tus objetivos.",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop",
+    image: "/fotos/capacitacion/Captura4.JPG",
   },
   {
     title: "Resultados naturales",
