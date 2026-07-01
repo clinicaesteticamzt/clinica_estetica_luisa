@@ -7,6 +7,7 @@ import { Check, ChevronDown, MessageCircle } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import SubpageLayout from "@/components/SubpageLayout";
 import BookingCalendar from "@/components/BookingCalendar";
+import CheckoutModal from "@/components/checkout/CheckoutModal";
 import {
   ALL_SERVICES,
   AVAILABLE_TIMES,
@@ -36,6 +37,9 @@ function ReservarContent() {
   const [telefono, setTelefono] = useState("");
   const [paymentMethod, setPaymentMethod] = useState<"clinic" | "online">("clinic");
   const [confirmed, setConfirmed] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [paidOnline, setPaidOnline] = useState(false);
+  const [transactionId, setTransactionId] = useState("");
 
   useEffect(() => {
     const svc = searchParams.get("servicio");
@@ -96,6 +100,8 @@ function ReservarContent() {
     setShowAllServices(false);
     setPaymentMethod("clinic");
     setConfirmed(false);
+    setPaidOnline(false);
+    setTransactionId("");
   }
 
   function selectService(id: string, catId?: string) {
@@ -105,6 +111,8 @@ function ReservarContent() {
     setSelectedTime("");
     setPaymentMethod("clinic");
     setConfirmed(false);
+    setPaidOnline(false);
+    setTransactionId("");
 
     const highEnd = HIGH_END_SERVICE_IDS.has(id);
     if (highEnd) scrollTo(contactRef);
@@ -132,16 +140,27 @@ function ReservarContent() {
 
   function handleConfirm() {
     if (!readyForContact || !selectedService) return;
+
+    if (!isHighEnd && paymentMethod === "online") {
+      setCheckoutOpen(true);
+      return;
+    }
+
     setConfirmed(true);
     window.open(buildWhatsAppUrl(), "_blank");
   }
 
-  function buildWhatsAppUrl() {
+  function buildWhatsAppUrl(paymentRef?: string) {
     if (!selectedService) return whatsappUrl("Hola, quiero agendar una cita.");
+
+    const paidNote =
+      paymentRef || paidOnline
+        ? `\nPago en línea confirmado (demo). Ref: ${paymentRef ?? transactionId}`
+        : "";
 
     const msg = isHighEnd
       ? `Hola, soy ${nombre}. Solicito valoración para ${selectedService.name} (${formatPriceMXN(selectedService.price, { from: selectedService.priceFrom })} estimado) en Clínica Dra. Laura Simental.\nTel: ${telefono}`
-      : `Hola, soy ${nombre}. Deseo reservar ${selectedService.name} el ${formatDateLong(selectedDate)} a las ${selectedTime}.\nPrecio referencia: ${formatPriceMXN(selectedService.price, { from: selectedService.priceFrom })}\nPago: ${paymentMethod === "online" ? "en línea" : "en clínica"}\nTel: ${telefono}`;
+      : `Hola, soy ${nombre}. Deseo reservar ${selectedService.name} el ${formatDateLong(selectedDate)} a las ${selectedTime}.\nPrecio referencia: ${formatPriceMXN(selectedService.price, { from: selectedService.priceFrom })}\nPago: ${paymentMethod === "online" || paidOnline ? "en línea" : "en clínica"}${paidNote}\nTel: ${telefono}`;
 
     return whatsappUrl(msg);
   }
@@ -356,7 +375,7 @@ function ReservarContent() {
                   >
                     <span className="block font-medium">Pagar en línea</span>
                     <span className="mt-1 block text-xs opacity-80">
-                      Coordinamos el pago al confirmar por WhatsApp
+                      Abre el checkout seguro con tarjeta simulada
                     </span>
                   </button>
                 </div>
@@ -388,7 +407,10 @@ function ReservarContent() {
             {confirmed && (
               <div className="mt-6 flex items-center gap-3 rounded-serenity bg-luxury-card px-4 py-3 text-sm text-luxury-dark">
                 <Check size={18} className="shrink-0 text-luxury-accent" />
-                Solicitud enviada. Si WhatsApp no se abrió,{" "}
+                {paidOnline
+                  ? "Pago simulado y reserva registradas."
+                  : "Solicitud enviada."}{" "}
+                Si WhatsApp no se abrió,{" "}
                 <a
                   href={buildWhatsAppUrl()}
                   target="_blank"
@@ -452,16 +474,51 @@ function ReservarContent() {
               >
                 {isHighEnd ? <MessageCircle size={18} /> : null}
                 <span className="sm:hidden">
-                  {isHighEnd ? "Valoración" : "Confirmar"}
+                  {isHighEnd
+                    ? "Valoración"
+                    : paymentMethod === "online"
+                      ? "Checkout"
+                      : "Confirmar"}
                 </span>
                 <span className="hidden sm:inline">
-                  {isHighEnd ? "Solicitar valoración" : "Confirmar reserva"}
+                  {isHighEnd
+                    ? "Solicitar valoración"
+                    : paymentMethod === "online"
+                      ? "Ir al checkout"
+                      : "Confirmar reserva"}
                 </span>
               </button>
             </div>
           </div>
         )}
       </section>
+
+      {selectedService && !isHighEnd && (
+        <CheckoutModal
+          open={checkoutOpen}
+          onClose={() => setCheckoutOpen(false)}
+          orderInput={{
+            serviceId: selectedService.id,
+            serviceName: selectedService.name,
+            categoryName: activeCategory?.title ?? "",
+            price: selectedService.price,
+            priceFrom: selectedService.priceFrom,
+            customerName: nombre,
+            customerPhone: telefono,
+            appointmentDate: selectedDate,
+            appointmentTime: selectedTime,
+          }}
+          onSuccess={(ref) => {
+            setPaidOnline(true);
+            setTransactionId(ref);
+            setConfirmed(true);
+          }}
+          onWhatsApp={(ref) => {
+            window.open(buildWhatsAppUrl(ref), "_blank");
+            setCheckoutOpen(false);
+          }}
+        />
+      )}
     </SubpageLayout>
   );
 }

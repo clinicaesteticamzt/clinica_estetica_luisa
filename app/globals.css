@@ -62,7 +62,7 @@
   }
 
   .btn-pill-dark {
-    @apply btn-pill bg-luxury-dark text-luxury-bg hover:bg-luxury-accent;
+    @apply btn-pill bg-luxury-dark text-luxury-bg hover:-translate-y-0.5 hover:bg-luxury-accent hover:shadow-serenity;
   }
 
   .btn-pill-outline {
@@ -71,6 +71,33 @@
 
   .btn-pill-light {
     @apply btn-pill bg-luxury-bg text-luxury-dark hover:bg-white;
+  }
+
+  .glass-luxury {
+    @apply border border-white/40 bg-white/55 shadow-serenity backdrop-blur-xl;
+    box-shadow:
+      0 8px 32px -8px rgba(62, 58, 38, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  }
+
+  .luxury-input {
+    @apply w-full rounded-serenity border border-luxury-accent/25 bg-luxury-bg/80 px-4 py-3 text-sm text-luxury-dark outline-none transition-all duration-300 placeholder:text-luxury-text/40 focus:border-luxury-accent focus:bg-white focus:shadow-[0_0_0_3px_rgba(164,150,115,0.15)];
+  }
+
+  .btn-luxury-gold {
+    @apply inline-flex items-center justify-center rounded-pill px-7 py-3.5 text-sm font-medium text-luxury-dark transition-all duration-300;
+    background: linear-gradient(135deg, #c4b896 0%, #a49673 45%, #8a7d5c 100%);
+    box-shadow: 0 4px 20px -4px rgba(164, 150, 115, 0.55);
+  }
+
+  .btn-luxury-gold:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 28px -6px rgba(164, 150, 115, 0.65);
+    filter: brightness(1.04);
+  }
+
+  .btn-luxury-gold:active:not(:disabled) {
+    transform: translateY(0);
   }
 
   .brand-slider-track {
