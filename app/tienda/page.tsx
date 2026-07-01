@@ -6,7 +6,7 @@ import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import BrandSlider from "@/components/BrandSlider";
 import SubpageLayout from "@/components/SubpageLayout";
-import { PRODUCTS, type Product } from "@/lib/data";
+import { PRODUCTS, formatPriceMXN, type Product } from "@/lib/data";
 
 const CATEGORIES = [
   "Todos",
@@ -39,6 +39,10 @@ function ProductCard({ product }: { product: Product }) {
         <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-luxury-text/60">
           {product.category}
         </p>
+        <p className="mt-4 font-serif text-xl text-luxury-dark">
+          {formatPriceMXN(product.price)}
+        </p>
+        <p className="mt-1 text-xs text-luxury-text/50">Precio de referencia</p>
       </div>
     </article>
   );
@@ -57,7 +61,7 @@ export default function TiendaPage() {
       <PageHeader
         label="Skincare premium"
         title="Catálogo de productos dermatológicos"
-        description="Marcas dermatológicas de la clínica — Avène, Filorga, Neostrata, Uriage, Isispharma, Noreva, Cumlaude Lab, Toskani y más — seleccionadas por la Dra. Laura Simental. Catálogo informativo: la recomendación y adquisición se realiza durante tu consulta."
+        description="Marcas dermatológicas de la clínica con precios de referencia. La recomendación y adquisición de productos se realiza durante tu consulta con la Dra. Laura Simental."
       />
 
       <BrandSlider />
