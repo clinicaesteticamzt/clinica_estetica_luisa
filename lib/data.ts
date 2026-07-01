@@ -290,74 +290,209 @@ export type Product = {
   brand: string;
   name: string;
   price: number;
-  category: "Limpiadores" | "Sueros" | "Protectores Solares" | "Anti-edad";
+  category:
+    | "Limpiadores"
+    | "Sueros"
+    | "Protectores Solares"
+    | "Anti-edad"
+    | "Hidratación";
   image: string;
+};
+
+const IMG = {
+  cleanser:
+    "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=400&h=400&fit=crop",
+  serum:
+    "https://images.unsplash.com/photo-1620916560421-33d2a0d0b4b6?w=400&h=400&fit=crop",
+  cream:
+    "https://images.unsplash.com/photo-1608248543801-ba977795e663?w=400&h=400&fit=crop",
+  sunscreen:
+    "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
+  bottle:
+    "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
+  dropper:
+    "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&h=400&fit=crop",
+  gel: "https://images.unsplash.com/photo-1556228578-dd6a9f1a0f0d?w=400&h=400&fit=crop",
+  mask:
+    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop",
 };
 
 export const PRODUCTS: Product[] = [
   {
-    id: "ce-ferulic",
-    brand: "SkinCeuticals",
-    name: "Suero Antioxidante C E Ferulic",
+    id: "avene-cleanance",
+    brand: "Avène",
+    name: "Cleanance Gel Limpiador",
+    price: 680,
+    category: "Limpiadores",
+    image: IMG.cleanser,
+  },
+  {
+    id: "avene-thermal",
+    brand: "Avène",
+    name: "Agua Termal Calmante",
+    price: 420,
+    category: "Hidratación",
+    image: IMG.bottle,
+  },
+  {
+    id: "filorga-ncef",
+    brand: "Filorga Paris",
+    name: "NCEF-Reverse Crema Suprema",
     price: 2890,
-    category: "Sueros",
-    image: "https://images.unsplash.com/photo-1620916560421-33d2a0d0b4b6?w=400&h=400&fit=crop",
-  },
-  {
-    id: "ha-intensifier",
-    brand: "SkinCeuticals",
-    name: "H.A. Intensifier",
-    price: 2450,
     category: "Anti-edad",
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
+    image: IMG.cream,
   },
   {
-    id: "gentle-cleanser",
-    brand: "Zo Skin Health",
-    name: "Gentle Cleanser",
+    id: "filorga-optim-eyes",
+    brand: "Filorga Paris",
+    name: "Optim-Eyes Contorno de Ojos",
+    price: 1450,
+    category: "Anti-edad",
+    image: IMG.dropper,
+  },
+  {
+    id: "neostrata-foaming",
+    brand: "Neostrata",
+    name: "Gel Limpiador Espumoso",
     price: 890,
     category: "Limpiadores",
-    image: "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=400&h=400&fit=crop",
+    image: IMG.gel,
   },
   {
-    id: "daily-power-defense",
-    brand: "Zo Skin Health",
-    name: "Daily Power Defense",
-    price: 1950,
-    category: "Anti-edad",
-    image: "https://images.unsplash.com/photo-1608248543801-ba977795e663?w=400&h=400&fit=crop",
-  },
-  {
-    id: "fusion-water",
-    brand: "Isdin",
-    name: "Protector Solar Avanzado Fusion Water",
-    price: 720,
-    category: "Protectores Solares",
-    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
-  },
-  {
-    id: "eryfotona",
-    brand: "Isdin",
-    name: "Eryfotona Actinica SPF 50+",
-    price: 980,
-    category: "Protectores Solares",
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop",
-  },
-  {
-    id: "simply-clean",
-    brand: "SkinCeuticals",
-    name: "Simply Clean Gel Limpiador",
-    price: 750,
-    category: "Limpiadores",
-    image: "https://images.unsplash.com/photo-1556228578-dd6a9f1a0f0d?w=400&h=400&fit=crop",
-  },
-  {
-    id: "retinol-skin",
-    brand: "Zo Skin Health",
-    name: "Retinol Skin Brightener",
+    id: "neostrata-bionic",
+    brand: "Neostrata",
+    name: "Bionic Face Cream",
     price: 1680,
     category: "Anti-edad",
-    image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&h=400&fit=crop",
+    image: IMG.cream,
+  },
+  {
+    id: "uriage-bariederm",
+    brand: "Uriage",
+    name: "Bariéderm Cica-Crème Reparadora",
+    price: 720,
+    category: "Hidratación",
+    image: IMG.cream,
+  },
+  {
+    id: "uriage-bariesun",
+    brand: "Uriage",
+    name: "Bariésun SPF 50+ Fluido",
+    price: 650,
+    category: "Protectores Solares",
+    image: IMG.sunscreen,
+  },
+  {
+    id: "isis-neotone",
+    brand: "Isispharma",
+    name: "Neotone Serum Despigmentante",
+    price: 1320,
+    category: "Sueros",
+    image: IMG.serum,
+  },
+  {
+    id: "isis-urelia",
+    brand: "Isispharma",
+    name: "Urelia Gel Keratoregulador",
+    price: 780,
+    category: "Limpiadores",
+    image: IMG.gel,
+  },
+  {
+    id: "noreva-exfoliac",
+    brand: "Noreva",
+    name: "Exfoliac Gel Limpiador Purificante",
+    price: 590,
+    category: "Limpiadores",
+    image: IMG.cleanser,
+  },
+  {
+    id: "noreva-cicavit",
+    brand: "Noreva",
+    name: "Cicavit+ Crema Reparadora",
+    price: 840,
+    category: "Hidratación",
+    image: IMG.cream,
+  },
+  {
+    id: "cumlaude-hidragyn",
+    brand: "Cumlaude Lab",
+    name: "Hidragyn Gel-Crema Hidratante",
+    price: 920,
+    category: "Hidratación",
+    image: IMG.cream,
+  },
+  {
+    id: "cumlaude-sensiliane",
+    brand: "Cumlaude Lab",
+    name: "Sensiliane Crema Intensa",
+    price: 760,
+    category: "Hidratación",
+    image: IMG.bottle,
+  },
+  {
+    id: "toskani-ha",
+    brand: "Toskani",
+    name: "TKN HA 3.5% Suero Hidratante",
+    price: 1580,
+    category: "Sueros",
+    image: IMG.dropper,
+  },
+  {
+    id: "toskani-vitamin-c",
+    brand: "Toskani",
+    name: "Vitamin C Pro Serum Iluminador",
+    price: 1720,
+    category: "Sueros",
+    image: IMG.serum,
+  },
+  {
+    id: "hd-peel-cleanser",
+    brand: "HD Cosmetic Efficiency",
+    name: "HD Peel Cleanser",
+    price: 1100,
+    category: "Limpiadores",
+    image: IMG.cleanser,
+  },
+  {
+    id: "hd-revive",
+    brand: "HD Cosmetic Efficiency",
+    name: "HD Revive Serum Renovador",
+    price: 1890,
+    category: "Sueros",
+    image: IMG.serum,
+  },
+  {
+    id: "elementre-detox",
+    brand: "Elementre",
+    name: "Detox Cleansing Gel",
+    price: 740,
+    category: "Limpiadores",
+    image: IMG.gel,
+  },
+  {
+    id: "elementre-age",
+    brand: "Elementre",
+    name: "Age Defy Cream",
+    price: 1650,
+    category: "Anti-edad",
+    image: IMG.cream,
+  },
+  {
+    id: "accuderm-foam",
+    brand: "Accuderm",
+    name: "Gentle Foam Cleanser",
+    price: 620,
+    category: "Limpiadores",
+    image: IMG.cleanser,
+  },
+  {
+    id: "accuderm-retinol",
+    brand: "Accuderm",
+    name: "Retinol Night Cream",
+    price: 1420,
+    category: "Anti-edad",
+    image: IMG.cream,
   },
 ];
 

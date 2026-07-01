@@ -12,6 +12,7 @@ const CATEGORIES = [
   "Todos",
   "Limpiadores",
   "Sueros",
+  "Hidratación",
   "Protectores Solares",
   "Anti-edad",
 ] as const;
@@ -56,7 +57,7 @@ export default function TiendaPage() {
       <PageHeader
         label="Skincare premium"
         title="Catálogo de productos dermatológicos"
-        description="Marcas de grado médico seleccionadas por la Dra. Laura Simental para prolongar y potenciar tus tratamientos en casa. Esta sección es informativa: la recomendación y adquisición de productos se realiza durante tu consulta en clínica."
+        description="Marcas dermatológicas de la clínica — Avène, Filorga, Neostrata, Uriage, Isispharma, Noreva, Cumlaude Lab, Toskani y más — seleccionadas por la Dra. Laura Simental. Catálogo informativo: la recomendación y adquisición se realiza durante tu consulta."
       />
 
       <BrandSlider />
