@@ -1,8 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import ClinicMap from "@/components/ClinicMap";
 import PageHeader from "@/components/PageHeader";
 import { CLINIC } from "@/lib/data";
+
+const CLINIC_EXTERIOR_IMAGE = "/clinica.JPG";
 
 const HOURS = [
   { days: "Lunes a Viernes", time: "9:00 AM – 7:00 PM" },
@@ -25,6 +28,23 @@ export default function LocationMap() {
             heightClass="h-[340px] sm:h-[440px] lg:h-[520px]"
             className="mb-8"
           />
+
+          <div className="relative mb-12 aspect-[16/9] overflow-hidden rounded-serenity-lg border border-luxury-accent/20 shadow-serenity-lg sm:aspect-[21/9] lg:mb-16">
+            <Image
+              src={CLINIC_EXTERIOR_IMAGE}
+              alt={`Fachada de ${CLINIC.name} en Plaza El Encanto, Mazatlán`}
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 1280px"
+              priority
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-luxury-dark/35 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
+              <p className="inline-block rounded-serenity border border-white/25 bg-luxury-bg/90 px-4 py-2 text-sm font-medium text-luxury-dark shadow-float backdrop-blur-sm">
+                {CLINIC.name} · Plaza El Encanto
+              </p>
+            </div>
+          </div>
 
           <div className="mb-12 grid gap-4 sm:grid-cols-3 lg:mb-16">
             <div className="rounded-serenity-lg border border-luxury-accent/15 bg-luxury-bg p-5 text-center shadow-serenity">
