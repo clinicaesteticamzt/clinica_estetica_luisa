@@ -9,10 +9,10 @@ const CLINIC_RECEPTION_IMAGE = "/fotos/clinica estetica.png";
 
 export default function Intro() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-x-clip">
       <div className="luxury-container pb-6 pt-12 md:pb-10 md:pt-24 lg:pt-28">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-          <ScrollReveal className="relative lg:col-span-7 lg:pr-6" offset={72}>
+          <ScrollReveal className="relative lg:col-span-7 lg:pr-6" offset={100}>
             <div
               aria-hidden
               className="absolute -bottom-6 -right-4 -z-10 hidden h-[90%] w-[80%] rounded-serenity-lg bg-luxury-card transition-transform duration-700 ease-out lg:block xl:-right-8"
@@ -40,8 +40,8 @@ export default function Intro() {
 
           <ScrollReveal
             className="lg:col-span-5 lg:py-8 xl:py-14"
-            delay={0.15}
-            offset={56}
+            delay={0.2}
+            offset={80}
           >
             <p className="section-label">Experiencia premium</p>
             <h2 className="section-title mt-4">
